@@ -17,7 +17,7 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#07090F", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+    <footer style={{ background: "var(--bg)", borderTop: "1px solid var(--border)" }}>
       {/* Gold gradient line */}
       <div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent)" }} />
 
@@ -34,7 +34,7 @@ export default function Footer() {
                 <span className="text-white/30 text-[9px] tracking-widest uppercase">Nezávislý průvodce</span>
               </div>
             </div>
-            <p style={{ color: "rgba(148,163,184,0.6)", fontSize: "0.8rem", lineHeight: "1.7", maxWidth: "280px" }}>
+            <p style={{ color: "var(--text-2)", fontSize: "0.8rem", lineHeight: "1.7", maxWidth: "280px" }}>
               Nezávislý vzdělávací portál o interim managementu pro majitele firem.
               Pomáháme rozhodovat se informovaně.
             </p>
@@ -42,7 +42,7 @@ export default function Footer() {
               <Link
                 href="/diagnostika"
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg hover:shadow-[0_0_16px_rgba(201,168,76,0.2)] transition-all duration-200"
-                style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}
+                style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}
               >
                 Spustit diagnostiku <ArrowUpRight size={11} />
               </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
           {/* Link cols */}
           {Object.entries(links).map(([section, items]) => (
             <div key={section}>
-              <h4 style={{ color: "rgba(148,163,184,0.4)", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
+              <h4 style={{ color: "var(--text-3)", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
                 {section}
               </h4>
               <ul className="space-y-3">
@@ -72,9 +72,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <div style={{ borderTop: "1px solid var(--border)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p style={{ color: "rgba(148,163,184,0.25)", fontSize: "0.72rem" }}>
+          <p style={{ color: "var(--text-4)", fontSize: "0.72rem" }}>
             © {new Date().getFullYear()} Interim Management CZ — vzdělávací portál
           </p>
           <p style={{ color: "rgba(148,163,184,0.15)", fontSize: "0.72rem" }}>

@@ -143,33 +143,33 @@ function QuestionCard({ q, why, signal, n, isOpen, onToggle }: {
   return (
     <div
       className="rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
-      style={{ background: isOpen ? "rgba(201,168,76,0.07)" : "rgba(255,255,255,0.04)", border: `1px solid ${isOpen ? "rgba(201,168,76,0.3)" : "rgba(255,255,255,0.07)"}` }}
+      style={{ background: isOpen ? "rgba(var(--accent-rgb),0.07)" : "var(--surface)", border: `1px solid ${isOpen ? "rgba(var(--accent-rgb),0.3)" : "var(--surface-2)"}` }}
       onClick={onToggle}
     >
       <div className="flex items-start gap-3 sm:gap-5 p-4 sm:p-6">
         <span
           className="text-2xl sm:text-4xl font-bold shrink-0 w-8 sm:w-12 leading-tight tabular-nums pt-0.5"
-          style={{ fontFamily: "var(--font-heading)", color: isOpen ? "#C9A84C" : "rgba(148,163,184,0.2)" }}
+          style={{ fontFamily: "var(--font-heading)", color: isOpen ? "var(--accent)" : "var(--text-4)" }}
         >
           {n}
         </span>
-        <p className="flex-1 text-sm sm:text-base font-bold leading-snug" style={{ fontFamily: "var(--font-heading)", color: isOpen ? "#F1F5F9" : "#CBD5E1" }}>
+        <p className="flex-1 text-sm sm:text-base font-bold leading-snug" style={{ fontFamily: "var(--font-heading)", color: isOpen ? "var(--text-1)" : "var(--text-2)" }}>
           {q}
         </p>
         <ChevronDown
           size={16}
           className="shrink-0 transition-transform duration-300 mt-1"
-          style={{ color: isOpen ? "#C9A84C" : "rgba(148,163,184,0.3)", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+          style={{ color: isOpen ? "var(--accent)" : "var(--text-3)", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </div>
       {isOpen && (
         <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 gap-4 pt-0">
-          <div className="p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "rgba(148,163,184,0.4)" }}>Proč se ptát</p>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(148,163,184,0.75)" }}>{why}</p>
+          <div className="p-4 rounded-xl" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "var(--text-3)" }}>Proč se ptát</p>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{why}</p>
           </div>
-          <div className="p-4 rounded-xl" style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)" }}>
-            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "rgba(201,168,76,0.5)" }}>Co sledovat v odpovědi</p>
+          <div className="p-4 rounded-xl" style={{ background: "rgba(var(--accent-rgb),0.05)", border: "1px solid rgba(201,168,76,0.15)" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "rgba(var(--accent-rgb),0.5)" }}>Co sledovat v odpovědi</p>
             <p className="text-sm leading-relaxed" style={{ color: "rgba(201,168,76,0.75)" }}>{signal}</p>
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function JakVybiratPage() {
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
 
   return (
-    <div style={{ background: "#07090F", minHeight: "100vh" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
 
       {/* ── HERO ── */}
       <div className="relative overflow-hidden pt-16">
@@ -193,10 +193,10 @@ export default function JakVybiratPage() {
           alt="Executive výběr"
           fill className="object-cover opacity-20" sizes="100vw"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,9,15,0.6) 0%, rgba(7,9,15,0.85) 70%, #07090F 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,9,15,0.6) 0%, rgba(7,9,15,0.85) 70%, var(--bg) 100%)" }} />
         <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent)" }} />
         {/* Bottom fade to page background */}
-        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, #07090F)", zIndex: 10 }} />
+        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, var(--bg))", zIndex: 10 }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="eyebrow mb-6">Průvodce výběrem</div>
@@ -207,19 +207,19 @@ export default function JakVybiratPage() {
                 Vybíráte<br />
                 <span className="gold-shimmer">správně?</span>
               </h1>
-              <p className="text-lg leading-relaxed mb-8 max-w-lg" style={{ color: "rgba(148,163,184,0.6)" }}>
+              <p className="text-lg leading-relaxed mb-8 max-w-lg" style={{ color: "var(--text-2)" }}>
                 Většina firem si při výběru interim manažera pokládá špatné otázky.
                 Výsledkem je zaplacení za přítomnost — místo za výsledek.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#kriteria"
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.25)]"
-                  style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}>
+                  style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}>
                   Zobrazit kritéria <ArrowRight size={15} />
                 </a>
                 <a href="#otazky"
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(241,245,249,0.7)" }}>
+                  style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
                   6 klíčových otázek
                 </a>
               </div>
@@ -235,7 +235,7 @@ export default function JakVybiratPage() {
               ].map(({ v, l }) => (
                 <div key={l} className="glass rounded-2xl p-5">
                   <div className="text-2xl lg:text-3xl font-bold mb-1.5 gold-shimmer" style={{ fontFamily: "var(--font-heading)" }}>{v}</div>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(148,163,184,0.45)" }}>{l}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "var(--text-3)" }}>{l}</p>
                 </div>
               ))}
             </div>
@@ -244,9 +244,9 @@ export default function JakVybiratPage() {
       </div>
 
       {/* ── PROCESS STEPS ── */}
-      <div style={{ background: "#07090F" }}>
+      <div style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-center" style={{ color: "rgba(148,163,184,0.3)" }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-center" style={{ color: "var(--text-3)" }}>
             Správný postup výběru — 4 kroky
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
@@ -259,13 +259,13 @@ export default function JakVybiratPage() {
                 )}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.2)" }}>
-                    <Icon size={16} style={{ color: "#C9A84C" }} />
+                    style={{ background: "rgba(var(--accent-rgb),0.1)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                    <Icon size={16} style={{ color: "var(--accent)" }} />
                   </div>
                   <span className="font-bold text-xs" style={{ fontFamily: "var(--font-heading)", color: "rgba(201,168,76,0.6)" }}>{num}</span>
                 </div>
-                <h3 className="text-sm font-bold mb-1.5" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(148,163,184,0.5)" }}>{desc}</p>
+                <h3 className="text-sm font-bold mb-1.5" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>{title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-3)" }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -283,7 +283,7 @@ export default function JakVybiratPage() {
                 Na čem závisí<br />úspěch nebo neúspěch
               </h2>
             </div>
-            <p style={{ color: "rgba(148,163,184,0.55)", lineHeight: "1.7", fontSize: "0.9rem" }}>
+            <p style={{ color: "var(--text-2)", lineHeight: "1.7", fontSize: "0.9rem" }}>
               Tato kritéria vycházejí z analýzy desítek interim angažmá. Každé z nich odhalí fundamentální rozdíl mezi poskytovateli.
             </p>
           </div>
@@ -292,33 +292,33 @@ export default function JakVybiratPage() {
             {criteria.map(({ num, icon: Icon, title, perex, detail, green, red, stat }) => (
               <div key={num}
                 className="group rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-[0_4px_40px_rgba(0,0,0,0.5)]"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
                 <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr]">
 
                   {/* Left accent col */}
                   <div className="p-7 lg:p-8 flex flex-col justify-between"
-                    style={{ borderRight: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
+                    style={{ borderRight: "1px solid var(--border)", background: "rgba(255,255,255,0.02)" }}>
                     <div>
                       <div className="flex items-center gap-3 mb-5">
                         <div className="w-11 h-11 rounded-2xl flex items-center justify-center"
-                          style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.2)" }}>
-                          <Icon size={20} style={{ color: "#C9A84C" }} />
+                          style={{ background: "rgba(var(--accent-rgb),0.1)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                          <Icon size={20} style={{ color: "var(--accent)" }} />
                         </div>
-                        <span className="text-5xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "rgba(201,168,76,0.12)" }}>{num}</span>
+                        <span className="text-5xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "rgba(var(--accent-rgb),0.12)" }}>{num}</span>
                       </div>
-                      <h3 className="text-xl font-bold mb-3" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{title}</h3>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(148,163,184,0.6)" }}>{perex}</p>
+                      <h3 className="text-xl font-bold mb-3" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>{title}</h3>
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{perex}</p>
                     </div>
                     {/* Stat */}
-                    <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div className="mt-6 pt-5" style={{ borderTop: "1px solid var(--border)" }}>
                       <div className="text-2xl font-bold gold-shimmer" style={{ fontFamily: "var(--font-heading)" }}>{stat.value}</div>
-                      <p className="text-xs mt-1" style={{ color: "rgba(148,163,184,0.4)" }}>{stat.label}</p>
+                      <p className="text-xs mt-1" style={{ color: "var(--text-3)" }}>{stat.label}</p>
                     </div>
                   </div>
 
                   {/* Right content col */}
                   <div className="p-7 lg:p-8">
-                    <p className="text-sm leading-relaxed mb-7" style={{ color: "rgba(148,163,184,0.65)" }}>{detail}</p>
+                    <p className="text-sm leading-relaxed mb-7" style={{ color: "var(--text-2)" }}>{detail}</p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Green */}
@@ -366,7 +366,7 @@ export default function JakVybiratPage() {
                 Otázky, které změní<br />rozhovor
               </h2>
             </div>
-            <p style={{ color: "rgba(148,163,184,0.55)", lineHeight: "1.7", fontSize: "0.9rem" }}>
+            <p style={{ color: "var(--text-2)", lineHeight: "1.7", fontSize: "0.9rem" }}>
               Každá otázka funguje jako filtr. Kliknutím rozbalíte, co sledovat v odpovědi a proč záleží na přesném znění.
             </p>
           </div>
@@ -383,10 +383,10 @@ export default function JakVybiratPage() {
           </div>
 
           <div className="mt-8 p-6 rounded-2xl flex items-start gap-4"
-            style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)" }}>
-            <Zap size={18} className="shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
+            style={{ background: "rgba(var(--accent-rgb),0.06)", border: "1px solid rgba(201,168,76,0.15)" }}>
+            <Zap size={18} className="shrink-0 mt-0.5" style={{ color: "var(--accent)" }} />
             <p className="text-sm leading-relaxed" style={{ color: "rgba(201,168,76,0.8)" }}>
-              <strong style={{ color: "#E4C76B" }}>Jak tyto otázky použít:</strong>{" "}
+              <strong style={{ color: "var(--accent-light)" }}>Jak tyto otázky použít:</strong>{" "}
               Pokládejte je v tomto pořadí. První dvě jsou kvalifikační — špatná odpověď ukončuje rozhovor. Otázky 3–6 prohlubují pochopení kandidáta a nastavují očekávání pro celé angažmá.
             </p>
           </div>
@@ -404,7 +404,7 @@ export default function JakVybiratPage() {
                 Okamžité<br />deal-breakers
               </h2>
             </div>
-            <p style={{ color: "rgba(148,163,184,0.55)", lineHeight: "1.7", fontSize: "0.9rem" }}>
+            <p style={{ color: "var(--text-2)", lineHeight: "1.7", fontSize: "0.9rem" }}>
               Při výskytu kteréhokoliv z těchto signálů ukončete výběrový proces — bez ohledu na to, jak dobrý je zbytek profilu.
             </p>
           </div>
@@ -413,18 +413,18 @@ export default function JakVybiratPage() {
             {redFlags.map(({ text, severity }, i) => (
               <div key={i} className="flex items-start gap-4 p-5 rounded-2xl transition-all duration-200"
                 style={{
-                  background: severity === "high" ? "rgba(239,68,68,0.07)" : "rgba(255,255,255,0.03)",
-                  border: `1px solid ${severity === "high" ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)"}`,
+                  background: severity === "high" ? "rgba(239,68,68,0.07)" : "var(--surface)",
+                  border: `1px solid ${severity === "high" ? "rgba(239,68,68,0.2)" : "var(--surface-2)"}`,
                 }}>
                 <div className="shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
                   style={{ background: severity === "high" ? "rgba(239,68,68,0.15)" : "rgba(148,163,184,0.08)" }}>
-                  <AlertTriangle size={11} style={{ color: severity === "high" ? "#F87171" : "rgba(148,163,184,0.4)" }} />
+                  <AlertTriangle size={11} style={{ color: severity === "high" ? "#F87171" : "var(--text-3)" }} />
                 </div>
                 <div>
                   {severity === "high" && (
                     <span className="text-[10px] font-bold uppercase tracking-widest block mb-1" style={{ color: "rgba(248,113,113,0.5)" }}>Kritické</span>
                   )}
-                  <p className="text-sm leading-relaxed" style={{ color: severity === "high" ? "rgba(252,165,165,0.75)" : "rgba(148,163,184,0.55)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: severity === "high" ? "rgba(252,165,165,0.75)" : "var(--text-2)" }}>
                     {text}
                   </p>
                 </div>
@@ -442,7 +442,7 @@ export default function JakVybiratPage() {
                 Vždy trvejte<br />na konkrétních číslech
               </h2>
             </div>
-            <p style={{ color: "rgba(148,163,184,0.55)", lineHeight: "1.7", fontSize: "0.9rem" }}>
+            <p style={{ color: "var(--text-2)", lineHeight: "1.7", fontSize: "0.9rem" }}>
               Níže jsou výchozí metriky podle typu angažmá. Konkrétní hodnoty (X, Y, Z) definujte spolu s manažerem před podpisem smlouvy.
             </p>
           </div>
@@ -450,13 +450,13 @@ export default function JakVybiratPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {kpis.map(({ situation, color, items }) => (
               <div key={situation} className="rounded-2xl overflow-hidden"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
                 <div className="px-5 py-4" style={{ borderBottom: `2px solid ${color}30`, background: `${color}08` }}>
                   <h3 className="text-sm font-bold" style={{ fontFamily: "var(--font-heading)", color }}>{situation}</h3>
                 </div>
                 <ul className="p-5 space-y-3">
                   {items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-xs leading-relaxed" style={{ color: "rgba(148,163,184,0.6)" }}>
+                    <li key={i} className="flex items-start gap-2.5 text-xs leading-relaxed" style={{ color: "var(--text-2)" }}>
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color, opacity: 0.6 }} />
                       {item}
                     </li>
@@ -481,30 +481,30 @@ export default function JakVybiratPage() {
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-10 lg:p-16">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-5 leading-tight" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-5 leading-tight" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                 Připraveni hledat<br />správného manažera?
               </h2>
-              <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(148,163,184,0.55)" }}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "var(--text-2)" }}>
                 Nejprve si ověřte, zda je vaše situace pro interim management vůbec správná.
                 Pak teprve hledejte — se správnými kritérii v ruce.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/diagnostika"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-[0_0_28px_rgba(201,168,76,0.25)]"
-                  style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}>
+                  style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}>
                   Diagnostikovat situaci <ArrowRight size={16} />
                 </Link>
                 <Link href="/magazin"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl transition-all duration-300"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(241,245,249,0.7)" }}>
+                  style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
                   Číst analýzy
                 </Link>
               </div>
             </div>
 
             {/* Summary checklist */}
-            <div className="rounded-2xl p-7" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(148,163,184,0.4)" }}>
+            <div className="rounded-2xl p-7" style={{ background: "var(--surface-2)", border: "1px solid var(--border)" }}>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-5" style={{ color: "var(--text-3)" }}>
                 Shrnutí — co musí splňovat váš interim manažer
               </h3>
               <ul className="space-y-3">
@@ -517,8 +517,8 @@ export default function JakVybiratPage() {
                   "Ochota diskutovat vlastní slabá místa",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 size={15} className="shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
-                    <span className="text-sm" style={{ color: "rgba(241,245,249,0.7)" }}>{item}</span>
+                    <CheckCircle2 size={15} className="shrink-0 mt-0.5" style={{ color: "var(--accent)" }} />
+                    <span className="text-sm" style={{ color: "var(--text-2)" }}>{item}</span>
                   </li>
                 ))}
               </ul>

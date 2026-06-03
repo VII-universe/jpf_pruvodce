@@ -58,7 +58,7 @@ const providers = [
     subtitle: "Týmové zázemí, smluvní odpovědnost, SME specializace",
     score: 91,
     badge: "Doporučeno",
-    color: "#C9A84C",
+    color: "var(--accent)",
     description: "Specializovaná agentura interim managementu spojuje zkušenost jednotlivců s organizačním zázemím. Nese smluvní zodpovědnost za výsledky, zajišťuje zastupitelnost a sleduje projekt celým týmem.",
     pros: [
       "Smluvní zodpovědnost agentury za KPI — ne pouze fyzické osoby",
@@ -92,7 +92,7 @@ const ratings: Record<string, Record<string, Rating>> = {
   "im-agentura": { zodpovědnost: "yes",  zastupitelnost: "yes",      kpi_smluvne: "yes",     sme_spec: "yes",     tym_znalost: "yes", dokumentace: "yes",     rychlost: "partial", smluvni_flex: "yes"  },
 };
 
-const WEIGHT_COLOR: Record<string, string> = { Kritické: "#F87171", Vysoké: "#FBBF24", Středně: "#60A5FA", Nízké: "rgba(148,163,184,0.4)" };
+const WEIGHT_COLOR: Record<string, string> = { Kritické: "#F87171", Vysoké: "#FBBF24", Středně: "#60A5FA", Nízké: "var(--text-3)" };
 
 function RatingIcon({ r }: { r: Rating }) {
   if (r === "yes")     return <CheckCircle2 size={16} style={{ color: "#34D399" }} />;
@@ -110,15 +110,15 @@ export default function PorovnaniPage() {
   const sorted = [...providers].sort((a, b) => b.score - a.score);
 
   return (
-    <div style={{ background: "#07090F", minHeight: "100vh" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
 
       {/* ── HERO ── */}
-      <div className="relative overflow-hidden pt-16" style={{ background: "#07090F" }}>
+      <div className="relative overflow-hidden pt-16" style={{ background: "var(--bg)" }}>
         <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80"
           alt="Srovnání poskytovatelů" fill className="object-cover opacity-10" sizes="100vw" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,9,15,0.8) 0%, #07090F 85%)" }} />
+        <div className="absolute inset-0 hero-img-overlay" style={{ background: "linear-gradient(to bottom, rgba(7,9,15,0.8) 0%, var(--bg) 100%)" }} />
         <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent)" }} />
-        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, #07090F)", zIndex: 10 }} />
+        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, var(--bg))", zIndex: 10 }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-20 pb-20 lg:pt-24 lg:pb-24">
           <div className="max-w-3xl">
@@ -127,7 +127,7 @@ export default function PorovnaniPage() {
               Kdo skutečně nese<br />
               <span className="gold-shimmer">zodpovědnost za výsledek?</span>
             </h1>
-            <p className="text-lg leading-relaxed max-w-2xl" style={{ color: "rgba(148,163,184,0.55)" }}>
+            <p className="text-lg leading-relaxed max-w-2xl" style={{ color: "var(--text-2)" }}>
               Srovnání čtyř typů poskytovatelů interim managementu podle kritérií, na kterých záleží nejvíce.
               Metodika je transparentní — posuďte sami.
             </p>
@@ -147,15 +147,15 @@ export default function PorovnaniPage() {
           <div className="space-y-4">
             {sorted.map((p, idx) => (
               <div key={p.id} className="rounded-2xl lg:rounded-3xl overflow-hidden"
-                style={{ background: p.badge ? "linear-gradient(to right, rgba(201,168,76,0.08), rgba(255,255,255,0.03))" : "rgba(255,255,255,0.04)", border: `1px solid ${p.badge ? "rgba(201,168,76,0.25)" : "rgba(255,255,255,0.07)"}` }}>
+                style={{ background: p.badge ? "linear-gradient(to right, rgba(201,168,76,0.08), rgba(255,255,255,0.03))" : "var(--surface)", border: `1px solid ${p.badge ? "rgba(var(--accent-rgb),0.25)" : "var(--surface-2)"}` }}>
 
                 {/* Mobile-only compact header row */}
-                <div className="flex items-center gap-3 px-5 py-4 lg:hidden" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                  <span className="text-xl font-bold shrink-0" style={{ fontFamily: "var(--font-heading)", color: idx === 0 ? "#C9A84C" : "rgba(148,163,184,0.2)" }}>#{idx + 1}</span>
-                  <h3 className="text-base font-bold flex-1" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{p.title}</h3>
+                <div className="flex items-center gap-3 px-5 py-4 lg:hidden" style={{ borderBottom: "1px solid var(--border)" }}>
+                  <span className="text-xl font-bold shrink-0" style={{ fontFamily: "var(--font-heading)", color: idx === 0 ? "var(--accent)" : "var(--text-4)" }}>#{idx + 1}</span>
+                  <h3 className="text-base font-bold flex-1" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>{p.title}</h3>
                   <div className="flex flex-col items-end shrink-0">
                     <span className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)", color: p.color }}>{p.score}</span>
-                    <span className="text-[10px]" style={{ color: "rgba(148,163,184,0.35)" }}>/ 100</span>
+                    <span className="text-[10px]" style={{ color: "var(--text-3)" }}>/ 100</span>
                   </div>
                 </div>
 
@@ -163,8 +163,8 @@ export default function PorovnaniPage() {
 
                   {/* Rank number — desktop only */}
                   <div className="hidden lg:flex items-center justify-center"
-                    style={{ background: idx === 0 ? "rgba(201,168,76,0.1)" : "rgba(255,255,255,0.02)", borderRight: "1px solid rgba(255,255,255,0.06)" }}>
-                    <span className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: idx === 0 ? "#C9A84C" : "rgba(148,163,184,0.2)" }}>
+                    style={{ background: idx === 0 ? "rgba(var(--accent-rgb),0.1)" : "rgba(255,255,255,0.02)", borderRight: "1px solid var(--border)" }}>
+                    <span className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: idx === 0 ? "var(--accent)" : "var(--text-4)" }}>
                       #{idx + 1}
                     </span>
                   </div>
@@ -172,16 +172,16 @@ export default function PorovnaniPage() {
                   {/* Main content */}
                   <div className="p-5 lg:p-8">
                     <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <h3 className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{p.title}</h3>
+                      <h3 className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>{p.title}</h3>
                       {p.badge && (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full"
-                          style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}>
+                          style={{ background: "rgba(var(--accent-rgb),0.15)", color: "var(--accent)", border: "1px solid rgba(201,168,76,0.3)" }}>
                           <Award size={11} /> {p.badge}
                         </span>
                       )}
                     </div>
-                    <p className="text-sm mb-4" style={{ color: "rgba(148,163,184,0.5)" }}>{p.subtitle}</p>
-                    <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(148,163,184,0.65)" }}>{p.description}</p>
+                    <p className="text-sm mb-4" style={{ color: "var(--text-3)" }}>{p.subtitle}</p>
+                    <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-2)" }}>{p.description}</p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -206,18 +206,18 @@ export default function PorovnaniPage() {
                       </div>
                     </div>
 
-                    <p className="text-xs mt-4 pt-4" style={{ color: "rgba(148,163,184,0.4)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                      <span className="font-bold" style={{ color: "rgba(148,163,184,0.5)" }}>Ideální pro: </span>{p.idealFor}
+                    <p className="text-xs mt-4 pt-4" style={{ color: "var(--text-3)", borderTop: "1px solid var(--border)" }}>
+                      <span className="font-bold" style={{ color: "var(--text-3)" }}>Ideální pro: </span>{p.idealFor}
                     </p>
                   </div>
 
                   {/* Score panel — desktop only */}
                   <div className="hidden lg:flex p-8 flex-col items-center justify-center gap-5"
-                    style={{ borderLeft: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
+                    style={{ borderLeft: "1px solid var(--border)", background: "rgba(255,255,255,0.02)" }}>
                     {/* Circle score */}
                     <div className="relative" style={{ width: 100, height: 100 }}>
                       <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="7" />
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="var(--surface-2)" strokeWidth="7" />
                         <circle cx="50" cy="50" r="42" fill="none"
                           stroke={p.color} strokeWidth="7" strokeLinecap="round"
                           strokeDasharray={`${2 * Math.PI * 42}`}
@@ -226,17 +226,17 @@ export default function PorovnaniPage() {
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
                         <span className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: p.color }}>{p.score}</span>
-                        <span className="text-[10px]" style={{ color: "rgba(148,163,184,0.35)" }}>/ 100</span>
+                        <span className="text-[10px]" style={{ color: "var(--text-3)" }}>/ 100</span>
                       </div>
                     </div>
 
                     {/* Score bar */}
                     <div className="w-full">
-                      <div className="flex justify-between text-[10px] mb-1.5" style={{ color: "rgba(148,163,184,0.35)" }}>
+                      <div className="flex justify-between text-[10px] mb-1.5" style={{ color: "var(--text-3)" }}>
                         <span>Celkové skóre</span>
                         <span style={{ color: p.color, fontWeight: 700 }}>{p.score} / 100</span>
                       </div>
-                      <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                      <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "var(--surface-2)" }}>
                         <div className="h-full rounded-full" style={{ width: `${p.score}%`, background: `linear-gradient(to right, ${p.color}88, ${p.color})` }} />
                       </div>
                     </div>
@@ -244,7 +244,7 @@ export default function PorovnaniPage() {
                     {idx === 0 && (
                       <Link href="/diagnostika"
                         className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-bold rounded-xl transition-all hover:shadow-[0_0_16px_rgba(201,168,76,0.25)]"
-                        style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}>
+                        style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}>
                         Konzultace <ArrowRight size={11} />
                       </Link>
                     )}
@@ -261,41 +261,41 @@ export default function PorovnaniPage() {
           <h2 className="text-3xl lg:text-4xl font-bold mb-3" style={{ fontFamily: "var(--font-heading)" }}>
             Kritérium po kritériu
           </h2>
-          <p className="text-sm mb-10" style={{ color: "rgba(148,163,184,0.45)" }}>
+          <p className="text-sm mb-10" style={{ color: "var(--text-3)" }}>
             Váha kritéria odráží jeho dopad na výsledky projektu.
           </p>
 
           {/* Table — horizontally scrollable on mobile */}
           <div className="overflow-x-auto -mx-4 sm:-mx-6 lg:mx-0 px-4 sm:px-6 lg:px-0">
-          <div className="rounded-2xl lg:rounded-3xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)", minWidth: 620 }}>
+          <div className="rounded-2xl lg:rounded-3xl overflow-hidden" style={{ border: "1px solid var(--border)", minWidth: 620 }}>
             {/* Header */}
-            <div className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", background: "rgba(255,255,255,0.04)" }}>
-              <div className="p-4 lg:p-5" style={{ background: "#07090F" }}>
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(148,163,184,0.3)" }}>Kritérium</span>
+            <div className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", background: "var(--surface)" }}>
+              <div className="p-4 lg:p-5" style={{ background: "var(--bg)" }}>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--text-3)" }}>Kritérium</span>
               </div>
               {providers.map(p => (
-                <div key={p.id} className="p-4 lg:p-5 text-center" style={{ background: p.badge ? "rgba(201,168,76,0.06)" : "#07090F" }}>
-                  <p className="text-xs font-bold leading-tight" style={{ fontFamily: "var(--font-heading)", color: p.badge ? "#C9A84C" : "rgba(241,245,249,0.7)" }}>
+                <div key={p.id} className="p-4 lg:p-5 text-center" style={{ background: p.badge ? "rgba(var(--accent-rgb),0.06)" : "var(--bg)" }}>
+                  <p className="text-xs font-bold leading-tight" style={{ fontFamily: "var(--font-heading)", color: p.badge ? "var(--accent)" : "var(--text-2)" }}>
                     {p.title}
                   </p>
-                  {p.badge && <Star size={10} fill="#C9A84C" style={{ color: "#C9A84C", margin: "4px auto 0" }} />}
+                  {p.badge && <Star size={10} fill="var(--accent)" style={{ color: "var(--accent)", margin: "4px auto 0" }} />}
                 </div>
               ))}
             </div>
 
             {/* Rows */}
             {criteria.map((c, i) => (
-              <div key={c.key} className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", background: "rgba(255,255,255,0.03)", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+              <div key={c.key} className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", background: "var(--surface)", borderTop: "1px solid var(--border)" }}>
                 {/* Criterion label */}
                 <div className="p-4 flex flex-col gap-1" style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent" }}>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold" style={{ color: "#E2E8F0" }}>{c.label}</span>
+                    <span className="text-sm font-semibold" style={{ color: "var(--text-1)" }}>{c.label}</span>
                     <div className="group relative">
-                      <Info size={12} style={{ color: "rgba(148,163,184,0.3)", cursor: "help" }} />
+                      <Info size={12} style={{ color: "var(--text-3)", cursor: "help" }} />
                     </div>
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wide"
-                    style={{ color: WEIGHT_COLOR[c.weight] ?? "rgba(148,163,184,0.3)" }}>
+                    style={{ color: WEIGHT_COLOR[c.weight] ?? "var(--text-3)" }}>
                     {c.weight}
                   </span>
                 </div>
@@ -315,14 +315,14 @@ export default function PorovnaniPage() {
             ))}
 
             {/* Score footer */}
-            <div className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-              <div className="p-4 lg:p-5" style={{ background: "rgba(255,255,255,0.04)" }}>
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(148,163,184,0.4)" }}>Celkové skóre</span>
+            <div className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", borderTop: "1px solid var(--border)" }}>
+              <div className="p-4 lg:p-5" style={{ background: "var(--surface)" }}>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--text-3)" }}>Celkové skóre</span>
               </div>
               {providers.map(p => (
-                <div key={p.id} className="p-4 lg:p-5 text-center" style={{ background: p.badge ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.03)" }}>
+                <div key={p.id} className="p-4 lg:p-5 text-center" style={{ background: p.badge ? "rgba(var(--accent-rgb),0.08)" : "var(--surface)" }}>
                   <span className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)", color: p.color }}>{p.score}</span>
-                  <div className="mt-1 h-1 rounded-full overflow-hidden mx-2" style={{ background: "rgba(255,255,255,0.06)" }}>
+                  <div className="mt-1 h-1 rounded-full overflow-hidden mx-2" style={{ background: "var(--surface-2)" }}>
                     <div className="h-full rounded-full" style={{ width: `${p.score}%`, background: p.color }} />
                   </div>
                 </div>
@@ -336,7 +336,7 @@ export default function PorovnaniPage() {
             {([["yes", "#34D399", "Ano — plně splňuje"], ["partial", "#FBBF24", "Částečně — s výhradami"], ["no", "#F87171", "Ne — nesplňuje"]] as const).map(([r, c, t]) => (
               <div key={r} className="flex items-center gap-2">
                 <RatingIcon r={r as Rating} />
-                <span className="text-xs" style={{ color: "rgba(148,163,184,0.45)" }}>{t}</span>
+                <span className="text-xs" style={{ color: "var(--text-3)" }}>{t}</span>
               </div>
             ))}
           </div>
@@ -345,11 +345,11 @@ export default function PorovnaniPage() {
         {/* ── METHODOLOGY ── */}
         <section>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="p-8 rounded-3xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-              <h3 className="text-lg font-bold mb-4" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+            <div className="p-8 rounded-3xl" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+              <h3 className="text-lg font-bold mb-4" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                 Jak jsme hodnotili
               </h3>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(148,163,184,0.6)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-2)" }}>
                 Hodnocení vychází z analýzy desítek interim angažmá a veřejně dostupných dat o výsledcích projektů.
                 Váha kritérií odráží jejich statistický dopad na úspěšnost angažmá.
               </p>
@@ -360,19 +360,19 @@ export default function PorovnaniPage() {
                   { w: "Středně (10 %)", t: "Dokumentace, rychlost nasazení" },
                   { w: "Nízké (5 %)", t: "Flexibilita délky angažmá" },
                 ].map(({ w, t }) => (
-                  <li key={w} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(148,163,184,0.55)" }}>
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#C9A84C" }} />
+                  <li key={w} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-2)" }}>
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
                     <span><strong style={{ color: "rgba(201,168,76,0.8)" }}>{w}:</strong> {t}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-8 rounded-3xl" style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)" }}>
-              <h3 className="text-lg font-bold mb-4" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+            <div className="p-8 rounded-3xl" style={{ background: "rgba(var(--accent-rgb),0.06)", border: "1px solid rgba(201,168,76,0.15)" }}>
+              <h3 className="text-lg font-bold mb-4" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                 Kdy srovnání neplatí
               </h3>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(148,163,184,0.6)" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-2)" }}>
                 Toto srovnání hodnotí poskytovatele z hlediska kritérií klíčových pro strategická angažmá v SME firmách.
                 Pro jiné kontexty může být vhodný jiný typ:
               </p>
@@ -382,7 +382,7 @@ export default function PorovnaniPage() {
                   "Personální agentura, pokud hledáte interního zaměstnance, ne interim manažera",
                   "Poradenská firma, pokud potřebujete výhradně analytický výstup bez implementace",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(148,163,184,0.55)" }}>
+                  <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-2)" }}>
                     <AlertCircle size={13} className="shrink-0 mt-0.5" style={{ color: "#FBBF24" }} />
                     {item}
                   </li>
@@ -403,22 +403,22 @@ export default function PorovnaniPage() {
           <div className="absolute inset-0" style={{ background: "rgba(7,9,15,0.9)" }} />
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-10 lg:p-14">
             <div>
-              <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+              <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                 Víte, jaký typ poskytovatele hledáte?
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(148,163,184,0.55)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
                 Projděte si 6 klíčových otázek, které odhalí rozdíl ještě při prvním pohovoru.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
               <Link href="/jak-vybirat"
                 className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-bold rounded-xl transition-all hover:shadow-[0_0_24px_rgba(201,168,76,0.25)]"
-                style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}>
+                style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}>
                 Průvodce výběrem <ArrowRight size={15} />
               </Link>
               <Link href="/diagnostika"
                 className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl transition-all"
-                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(241,245,249,0.7)" }}>
+                style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
                 Spustit diagnostiku
               </Link>
             </div>

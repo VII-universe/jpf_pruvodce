@@ -22,7 +22,7 @@ const situations = [
   { icon: Zap,           title: "Rychlý růst",       color: "#60A5FA", href: "/diagnostika#rust" },
   { icon: RefreshCw,     title: "Generační předání", color: "#A78BFA", href: "/diagnostika#prechod" },
   { icon: Users,         title: "Transformace",      color: "#2DD4BF", href: "/diagnostika#transformace" },
-  { icon: Target,        title: "Provozní optim.",   color: "#C9A84C", href: "/diagnostika" },
+  { icon: Target,        title: "Provozní optim.",   color: "var(--accent)", href: "/diagnostika" },
 ];
 
 const proofNumbers = [
@@ -48,8 +48,8 @@ export default function HomePage() {
           fill priority className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(7,9,15,0.97) 0%, rgba(7,9,15,0.88) 50%, rgba(7,9,15,0.55) 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0 hero-img-overlay" style={{ background: "linear-gradient(115deg, rgba(7,9,15,0.97) 0%, rgba(7,9,15,0.88) 50%, rgba(7,9,15,0.55) 100%)" }} />
+        <div className="absolute inset-0 hero-blob" style={{ background: "radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%)" }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 pb-16 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -64,7 +64,7 @@ export default function HomePage() {
               <div className="overflow-hidden mb-5 anim-fade-up anim-delay-1" style={{ height: "2.4rem" }}>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full shrink-0 animate-pulse" style={{ background: "#F87171" }} />
-                  <p className="text-base font-semibold" style={{ color: "rgba(241,245,249,0.5)" }}>
+                  <p className="text-base font-semibold" style={{ color: "var(--text-3)" }}>
                     Poznáváte se? → {painPoints[0]}
                   </p>
                 </div>
@@ -72,14 +72,14 @@ export default function HomePage() {
 
               <h1
                 className="anim-fade-up anim-delay-1 font-bold leading-[1.06] tracking-tight mb-6"
-                style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.6rem, 5.5vw, 4.5rem)", color: "#F1F5F9" }}
+                style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.6rem, 5.5vw, 4.5rem)", color: "var(--text-1)" }}
               >
                 Firma nepotřebuje<br />
                 <span className="gold-shimmer">dalšího poradce.</span><br />
                 Potřebuje výsledek.
               </h1>
 
-              <p className="anim-fade-up anim-delay-2 text-lg leading-relaxed mb-10 max-w-xl" style={{ color: "rgba(148,163,184,0.6)" }}>
+              <p className="anim-fade-up anim-delay-2 text-lg leading-relaxed mb-10 max-w-xl" style={{ color: "var(--text-2)" }}>
                 Interim manažer přichází s plným mandátem, nese zodpovědnost za KPI
                 a odchází, až je firma soběstačná. Žádné reporty. Žádné výmluvy.
               </p>
@@ -88,14 +88,14 @@ export default function HomePage() {
                 <Link
                   href="/diagnostika"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-[0_0_32px_rgba(201,168,76,0.3)]"
-                  style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}
+                  style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}
                 >
                   Diagnostikovat mou situaci <ArrowRight size={16} />
                 </Link>
                 <Link
                   href="/magazin"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl glass transition-all"
-                  style={{ color: "rgba(241,245,249,0.65)" }}
+                  style={{ color: "var(--text-2)" }}
                 >
                   Číst analýzy
                 </Link>
@@ -106,7 +106,7 @@ export default function HomePage() {
                 {proofNumbers.map(({ v, l }) => (
                   <div key={l} className="glass rounded-xl px-4 py-3">
                     <div className="font-bold mb-0.5 gold-shimmer" style={{ fontFamily: "var(--font-heading)", fontSize: "1.35rem" }}>{v}</div>
-                    <p className="text-[11px] leading-snug" style={{ color: "rgba(148,163,184,0.45)" }}>{l}</p>
+                    <p className="text-[11px] leading-snug" style={{ color: "var(--text-3)" }}>{l}</p>
                   </div>
                 ))}
               </div>
@@ -114,7 +114,7 @@ export default function HomePage() {
 
             {/* Right: situation quick-picks — hidden on mobile */}
             <div className="hidden lg:block lg:col-span-5">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "rgba(148,163,184,0.3)" }}>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "var(--text-3)" }}>
                 Vaše situace?
               </p>
               <div className="space-y-2.5">
@@ -125,13 +125,13 @@ export default function HomePage() {
                     <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${color}18` }}>
                       <Icon size={15} style={{ color }} />
                     </div>
-                    <span className="text-sm font-semibold flex-1" style={{ color: "#E2E8F0", fontFamily: "var(--font-heading)" }}>{title}</span>
-                    <ChevronRight size={14} className="shrink-0 transition-transform group-hover:translate-x-0.5" style={{ color: "rgba(148,163,184,0.25)" }} />
+                    <span className="text-sm font-semibold flex-1" style={{ color: "var(--text-1)", fontFamily: "var(--font-heading)" }}>{title}</span>
+                    <ChevronRight size={14} className="shrink-0 transition-transform group-hover:translate-x-0.5" style={{ color: "var(--text-4)" }} />
                   </Link>
                 ))}
                 <Link href="/diagnostika"
                   className="flex items-center justify-center gap-2 py-3 text-xs font-semibold rounded-xl transition-all mt-1"
-                  style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.15)", color: "#C9A84C" }}
+                  style={{ background: "rgba(var(--accent-rgb),0.07)", border: "1px solid rgba(201,168,76,0.15)", color: "var(--accent)" }}
                 >
                   Spustit diagnostiku <ArrowRight size={12} />
                 </Link>
@@ -141,13 +141,13 @@ export default function HomePage() {
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 160, background: "linear-gradient(to bottom, transparent, #07090F)", zIndex: 10 }} />
+        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 160, background: "linear-gradient(to bottom, transparent, var(--bg))", zIndex: 10 }} />
       </section>
 
       {/* ─────────────────────────────────────────────────────
           WHAT MAKES INTERIM DIFFERENT — 3 columns
       ───────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24" style={{ background: "#07090F" }}>
+      <section className="py-20 lg:py-24" style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
@@ -167,10 +167,10 @@ export default function HomePage() {
                 text: "Dobrý interim manažer plánuje svůj odchod od prvního dne. Firma po něm funguje lépe — bez něho.",
               },
             ].map(({ num, title, text }) => (
-              <div key={num} className="p-7 rounded-2xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                <span className="text-4xl font-bold block mb-4" style={{ fontFamily: "var(--font-heading)", color: "rgba(201,168,76,0.18)" }}>{num}</span>
-                <h3 className="text-base font-bold mb-2" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(148,163,184,0.55)" }}>{text}</p>
+              <div key={num} className="p-7 rounded-2xl" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+                <span className="text-4xl font-bold block mb-4" style={{ fontFamily: "var(--font-heading)", color: "rgba(var(--accent-rgb),0.18)" }}>{num}</span>
+                <h3 className="text-base font-bold mb-2" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>{title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
               </div>
             ))}
           </div>
@@ -180,14 +180,14 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────
           FEATURED ARTICLES
       ───────────────────────────────────────────────────── */}
-      <section className="section-glow py-20 lg:py-28" style={{ background: "#07090F" }}>
+      <section className="section-glow py-20 lg:py-28" style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-end justify-between mb-10">
             <div>
               <div className="eyebrow mb-4">Magazín</div>
               <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: "var(--font-heading)" }}>Nejčtenější analýzy</h2>
             </div>
-            <Link href="/magazin" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-[#E4C76B]" style={{ color: "#C9A84C" }}>
+            <Link href="/magazin" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-[#E4C76B]" style={{ color: "var(--accent)" }}>
               Všechny články <ArrowRight size={14} />
             </Link>
           </div>
@@ -200,14 +200,14 @@ export default function HomePage() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:1024px)100vw,58vw" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,9,15,0.97) 0%, rgba(7,9,15,0.5) 50%, transparent 100%)" }} />
                 <div className="relative z-10 p-7">
-                  <span className="text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-lg mb-3 inline-block" style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.25)" }}>
+                  <span className="text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-lg mb-3 inline-block" style={{ background: "rgba(var(--accent-rgb),0.15)", color: "var(--accent)", border: "1px solid rgba(201,168,76,0.25)" }}>
                     {articles[0].category}
                   </span>
-                  <h3 className="text-xl lg:text-2xl font-bold leading-snug mb-2 group-hover:text-[#E4C76B] transition-colors" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+                  <h3 className="text-xl lg:text-2xl font-bold leading-snug mb-2 group-hover:text-[#E4C76B] transition-colors" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                     {articles[0].title}
                   </h3>
-                  <p className="text-sm line-clamp-2 mb-4" style={{ color: "rgba(148,163,184,0.6)" }}>{articles[0].excerpt}</p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "#C9A84C" }}>Číst <ArrowRight size={13} /></span>
+                  <p className="text-sm line-clamp-2 mb-4" style={{ color: "var(--text-2)" }}>{articles[0].excerpt}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--accent)" }}>Číst <ArrowRight size={13} /></span>
                 </div>
               </Link>
             )}
@@ -217,17 +217,17 @@ export default function HomePage() {
               {articles.slice(1, 4).map(a => (
                 <Link key={a.slug} href={`/magazin/${a.slug}`}
                   className="group flex gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-x-0.5"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                  style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
                   <div className="relative w-20 h-16 rounded-lg overflow-hidden shrink-0">
                     <Image src={a.image} alt={a.imageAlt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="80px" />
                   </div>
                   <div className="flex flex-col justify-between flex-1 min-w-0">
-                    <h4 className="text-sm font-bold leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2" style={{ fontFamily: "var(--font-heading)", color: "#E2E8F0" }}>
+                    <h4 className="text-sm font-bold leading-snug group-hover:text-[#C9A84C] transition-colors line-clamp-2" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                       {a.title}
                     </h4>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.05)", color: "rgba(148,163,184,0.4)" }}>{a.category}</span>
-                      <span className="text-[10px]" style={{ color: "rgba(148,163,184,0.3)" }}>
+                      <span className="text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--text-3)" }}>{a.category}</span>
+                      <span className="text-[10px]" style={{ color: "var(--text-3)" }}>
                         <Clock size={9} className="inline mr-1" />{a.readingTime} min · {formatDateShort(a.publishedAt)}
                       </span>
                     </div>
@@ -236,7 +236,7 @@ export default function HomePage() {
               ))}
 
               <Link href="/magazin" className="flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-semibold transition-all"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", color: "rgba(148,163,184,0.45)" }}>
+                style={{ background: "var(--surface)", border: "1px solid var(--border)", color: "var(--text-3)" }}>
                 Zobrazit všech {articles.length} článků <ArrowRight size={11} />
               </Link>
             </div>
@@ -248,7 +248,7 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────
           LEADERBOARD BANNER
       ───────────────────────────────────────────────────── */}
-      <section className="py-10 lg:py-12" style={{ background: "#07090F" }}>
+      <section className="py-10 lg:py-12" style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <BannerLeaderboard />
         </div>
@@ -257,9 +257,9 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────
           COMPARISON TEASER
       ───────────────────────────────────────────────────── */}
-      <section className="py-16 section-glow" style={{ background: "#07090F" }}>
+      <section className="py-16 section-glow" style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="rounded-3xl overflow-hidden" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+          <div className="rounded-3xl overflow-hidden" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Left */}
               <div className="p-8 lg:p-10">
@@ -267,28 +267,28 @@ export default function HomePage() {
                 <h2 className="text-2xl lg:text-3xl font-bold mb-4 leading-tight" style={{ fontFamily: "var(--font-heading)" }}>
                   Freelancer, agentura nebo<br />specializovaná firma?
                 </h2>
-                <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,163,184,0.55)" }}>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-2)" }}>
                   Nezávislé srovnání 4 typů poskytovatelů podle 8 kritérií. S jasným žebříčkem a metodikou.
                 </p>
                 <Link href="/porovnani"
                   className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-xl transition-all hover:shadow-[0_0_20px_rgba(201,168,76,0.2)]"
-                  style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}>
+                  style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}>
                   Zobrazit srovnání <ArrowRight size={14} />
                 </Link>
               </div>
               {/* Right — mini score preview */}
-              <div className="p-8 lg:p-10" style={{ borderLeft: "1px solid rgba(255,255,255,0.06)" }}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(148,163,184,0.3)" }}>Celkové skóre</p>
+              <div className="p-8 lg:p-10" style={{ borderLeft: "1px solid var(--border)" }}>
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "var(--text-3)" }}>Celkové skóre</p>
                 <div className="space-y-3">
                   {[
-                    { t: "Specializovaná IM agentura", s: 91, c: "#C9A84C", b: true },
+                    { t: "Specializovaná IM agentura", s: 91, c: "var(--accent)", b: true },
                     { t: "Solo freelancer",             s: 42, c: "#F87171", b: false },
                     { t: "Poradenská firma",            s: 38, c: "#FBBF24", b: false },
                     { t: "Personální agentura",        s: 28, c: "#94A3B8", b: false },
                   ].map(({ t, s, c, b }) => (
                     <div key={t} className="flex items-center gap-3">
-                      <span className="text-xs w-44 shrink-0 font-medium" style={{ color: b ? "#E4C76B" : "rgba(148,163,184,0.55)" }}>{t}</span>
-                      <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                      <span className="text-xs w-44 shrink-0 font-medium" style={{ color: b ? "var(--accent-light)" : "var(--text-2)" }}>{t}</span>
+                      <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "var(--surface-2)" }}>
                         <div className="h-full rounded-full transition-all duration-700" style={{ width: `${s}%`, background: c }} />
                       </div>
                       <span className="text-xs font-bold w-7 text-right shrink-0" style={{ color: c }}>{s}</span>
@@ -304,21 +304,21 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────
           EDITORIAL QUOTE
       ───────────────────────────────────────────────────── */}
-      <section className="relative py-20 lg:py-28 overflow-hidden section-glow" style={{ background: "#07090F" }}>
+      <section className="relative py-20 lg:py-28 overflow-hidden section-glow" style={{ background: "var(--bg)" }}>
         <Image src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1920&q=80"
           alt="Executive" fill className="object-cover opacity-12" sizes="100vw" />
-        <div className="absolute inset-0" style={{ background: "rgba(7,9,15,0.92)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(7,9,15,0.9)" }} />
         <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-10 text-center">
-          <div className="text-3xl mb-6" style={{ color: "rgba(201,168,76,0.2)" }}>&ldquo;</div>
+          <div className="text-3xl mb-6" style={{ color: "rgba(var(--accent-rgb),0.2)" }}>&ldquo;</div>
           <p className="text-2xl lg:text-3xl font-semibold leading-snug mb-7"
-            style={{ fontFamily: "var(--font-heading)", color: "#E2E8F0" }}>
+            style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
             Nejdražší rozhodnutí ve firmě není špatný nákup ani promarněná zakázka.
             Je to čekat příliš dlouho se správnou pomocí.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <div style={{ height: 1, width: 40, background: "rgba(201,168,76,0.2)" }} />
-            <span className="text-xs" style={{ color: "rgba(148,163,184,0.35)" }}>Redakce Interim Management CZ</span>
-            <div style={{ height: 1, width: 40, background: "rgba(201,168,76,0.2)" }} />
+            <div style={{ height: 1, width: 40, background: "rgba(var(--accent-rgb),0.2)" }} />
+            <span className="text-xs" style={{ color: "var(--text-3)" }}>Redakce Interim Management CZ</span>
+            <div style={{ height: 1, width: 40, background: "rgba(var(--accent-rgb),0.2)" }} />
           </div>
         </div>
       </section>
@@ -326,7 +326,7 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────
           HOW TO CHOOSE — 4 questions
       ───────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 section-glow" style={{ background: "#07090F" }}>
+      <section className="py-20 lg:py-28 section-glow" style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
@@ -334,13 +334,13 @@ export default function HomePage() {
               <h2 className="text-3xl lg:text-4xl font-bold leading-tight mb-5" style={{ fontFamily: "var(--font-heading)" }}>
                 Většina firem si při výběru pokládá špatné otázky
               </h2>
-              <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(148,163,184,0.55)" }}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "var(--text-2)" }}>
                 Čtyři otázky, které okamžitě odhalí rozdíl mezi skutečným interim manažerem
                 a konzultantem s jiným označením.
               </p>
               <Link href="/jak-vybirat"
                 className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]"
-                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)", color: "#F1F5F9" }}>
+                style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--text-1)" }}>
                 Celý průvodce výběrem <ArrowRight size={14} />
               </Link>
             </div>
@@ -354,9 +354,9 @@ export default function HomePage() {
               ].map(({ n, q }) => (
                 <Link key={n} href="/jak-vybirat"
                   className="glass-hover group flex items-center gap-4 p-4 rounded-xl">
-                  <span className="font-bold shrink-0 text-lg w-8" style={{ fontFamily: "var(--font-heading)", color: "#C9A84C" }}>{n}</span>
-                  <p className="text-sm font-semibold flex-1 leading-snug" style={{ color: "#E2E8F0" }}>{q}</p>
-                  <ArrowRight size={14} className="shrink-0 group-hover:text-[#C9A84C] transition-colors" style={{ color: "rgba(148,163,184,0.2)" }} />
+                  <span className="font-bold shrink-0 text-lg w-8" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>{n}</span>
+                  <p className="text-sm font-semibold flex-1 leading-snug" style={{ color: "var(--text-1)" }}>{q}</p>
+                  <ArrowRight size={14} className="shrink-0 group-hover:text-[#C9A84C] transition-colors" style={{ color: "var(--text-4)" }} />
                 </Link>
               ))}
             </div>
@@ -367,7 +367,7 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────
           PHOTO STRIP
       ───────────────────────────────────────────────────── */}
-      <section className="pb-20" style={{ background: "#07090F" }}>
+      <section className="pb-20" style={{ background: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-3 gap-3 h-52 lg:h-64 rounded-2xl overflow-hidden">
             {[

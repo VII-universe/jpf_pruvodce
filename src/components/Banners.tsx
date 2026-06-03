@@ -21,11 +21,11 @@ export function BannerStrip() {
       <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full" style={{ background: "linear-gradient(to bottom, #C9A84C, rgba(201,168,76,0.2))" }} />
 
       <div className="flex-1 pl-2">
-        <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-1" style={{ color: "rgba(201,168,76,0.45)" }}>
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-1" style={{ color: "rgba(var(--accent-rgb),0.45)" }}>
           Partnerský obsah
         </span>
-        <p className="text-sm leading-relaxed" style={{ color: "rgba(241,245,249,0.7)" }}>
-          <strong style={{ color: "#F1F5F9", fontFamily: "var(--font-heading)" }}>Bezplatná konzultace pro majitele firem</strong>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
+          <strong style={{ color: "var(--text-1)", fontFamily: "var(--font-heading)" }}>Bezplatná konzultace pro majitele firem</strong>
           {" "}— senior interim manažer zhodnotí vaši situaci a doporučí konkrétní postup.
         </p>
       </div>
@@ -34,7 +34,7 @@ export function BannerStrip() {
         href="/diagnostika"
         className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl transition-all duration-200 whitespace-nowrap"
         style={{
-          background: "linear-gradient(135deg, #C9A84C, #8A6820)",
+          background: "linear-gradient(135deg, var(--accent), var(--accent-dark))",
           color: "#fff",
           boxShadow: "0 2px 12px rgba(201,168,76,0.2)",
         }}
@@ -54,7 +54,7 @@ export function BannerSidebar() {
     <div
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "#0D1120",
+        background: "var(--bg)",
         border: "1px solid rgba(201,168,76,0.18)",
       }}
     >
@@ -65,19 +65,19 @@ export function BannerSidebar() {
         <div className="flex items-center gap-2.5 mb-4">
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-            style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)" }}
+            style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))" }}
           >
             <span className="text-white font-bold text-xs" style={{ fontFamily: "var(--font-heading)" }}>IM</span>
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgba(201,168,76,0.5)" }}>
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: "rgba(var(--accent-rgb),0.5)" }}>
             Doporučený partner
           </span>
         </div>
 
-        <h4 className="text-sm font-bold mb-2 leading-snug" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+        <h4 className="text-sm font-bold mb-2 leading-snug" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
           Hledáte interim manažera s týmovým zázemím?
         </h4>
-        <p className="text-xs leading-relaxed mb-5" style={{ color: "rgba(148,163,184,0.55)" }}>
+        <p className="text-xs leading-relaxed mb-5" style={{ color: "var(--text-2)" }}>
           Specializace na střední firmy. Smluvní KPI, zastupitelnost a měřitelné výsledky.
         </p>
 
@@ -85,7 +85,7 @@ export function BannerSidebar() {
           href="/diagnostika"
           className="flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold rounded-xl transition-all duration-200 w-full"
           style={{
-            background: "linear-gradient(135deg, #C9A84C, #8A6820)",
+            background: "linear-gradient(135deg, var(--accent), var(--accent-dark))",
             color: "#fff",
             boxShadow: "0 2px 16px rgba(201,168,76,0.2)",
           }}
@@ -96,7 +96,7 @@ export function BannerSidebar() {
         <Link
           href="/porovnani"
           className="flex items-center justify-center gap-1 mt-2.5 text-xs transition-colors hover:text-[#C9A84C]"
-          style={{ color: "rgba(148,163,184,0.35)" }}
+          style={{ color: "var(--text-3)" }}
         >
           Porovnat poskytovatele <ArrowRight size={10} />
         </Link>
@@ -138,7 +138,7 @@ export function BannerStickyBottom() {
 
       <div
         style={{
-          background: "rgba(10,13,22,0.97)",
+          background: "var(--nav-bg)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
         }}
@@ -147,17 +147,17 @@ export function BannerStickyBottom() {
           {/* Logo */}
           <div
             className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-            style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)" }}
+            style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))" }}
           >
             <span className="text-white font-bold text-[10px]" style={{ fontFamily: "var(--font-heading)" }}>IM</span>
           </div>
 
           {/* Text */}
           <div className="flex-1 min-w-0 flex items-center gap-2 flex-wrap">
-            <span className="text-[10px] font-bold uppercase tracking-[0.18em] shrink-0" style={{ color: "rgba(201,168,76,0.5)" }}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] shrink-0" style={{ color: "rgba(var(--accent-rgb),0.5)" }}>
               Partnerský obsah
             </span>
-            <span className="text-xs" style={{ color: "rgba(241,245,249,0.6)" }}>
+            <span className="text-xs" style={{ color: "var(--text-2)" }}>
               Bezplatná 30min konzultace — senior interim manažer zhodnotí vaši situaci.
             </span>
           </div>
@@ -168,7 +168,7 @@ export function BannerStickyBottom() {
               href="/diagnostika"
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg transition-all duration-200 whitespace-nowrap"
               style={{
-                background: "linear-gradient(135deg, #C9A84C, #8A6820)",
+                background: "linear-gradient(135deg, var(--accent), var(--accent-dark))",
                 color: "#fff",
                 boxShadow: "0 2px 12px rgba(201,168,76,0.25)",
               }}
@@ -178,7 +178,7 @@ export function BannerStickyBottom() {
             <button
               onClick={dismiss}
               className="p-1.5 rounded-lg transition-colors"
-              style={{ color: "rgba(148,163,184,0.35)" }}
+              style={{ color: "var(--text-3)" }}
               aria-label="Zavřít"
             >
               <X size={15} />
@@ -199,7 +199,7 @@ export function BannerLeaderboard() {
     <div
       className="relative overflow-hidden rounded-2xl"
       style={{
-        background: "linear-gradient(135deg, #10120A 0%, #0A0D1A 100%)",
+        background: "var(--bg)",
         border: "1px solid rgba(201,168,76,0.2)",
       }}
     >
@@ -210,17 +210,17 @@ export function BannerLeaderboard() {
       <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-5 px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-7">
         {/* Left */}
         <div className="flex items-start gap-4 flex-1 min-w-0">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", boxShadow: "0 0 20px rgba(201,168,76,0.25)" }}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", boxShadow: "0 0 20px rgba(201,168,76,0.25)" }}>
             <span className="text-white font-bold text-xs" style={{ fontFamily: "var(--font-heading)" }}>IM</span>
           </div>
           <div className="min-w-0">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-1" style={{ color: "rgba(201,168,76,0.45)" }}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-1" style={{ color: "rgba(var(--accent-rgb),0.45)" }}>
               Doporučený partner · Inzerce
             </span>
-            <p className="text-sm font-semibold leading-snug mb-1" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+            <p className="text-sm font-semibold leading-snug mb-1" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
               Senior interim management pro střední firmy — s týmovým zázemím a smluvními KPI
             </p>
-            <p className="text-xs hidden sm:block" style={{ color: "rgba(148,163,184,0.5)" }}>
+            <p className="text-xs hidden sm:block" style={{ color: "var(--text-3)" }}>
               Zastupitelnost · Procesní standardizace · Měřitelné výsledky
             </p>
           </div>
@@ -231,14 +231,14 @@ export function BannerLeaderboard() {
           <Link
             href="/diagnostika"
             className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-200"
-            style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", color: "#fff", boxShadow: "0 2px 14px rgba(201,168,76,0.22)" }}
+            style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff", boxShadow: "0 2px 14px rgba(201,168,76,0.22)" }}
           >
             Konzultace <ArrowRight size={11} />
           </Link>
           <Link
             href="/porovnani"
             className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-200"
-            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)", color: "rgba(241,245,249,0.55)" }}
+            style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--text-2)" }}
           >
             Porovnat
           </Link>

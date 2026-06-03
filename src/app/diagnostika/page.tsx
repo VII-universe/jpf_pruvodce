@@ -364,13 +364,13 @@ const TIER_META = {
 function ProgressBar({ current, total, color }: { current: number; total: number; color: string }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.07)" }}>
+      <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "var(--surface-2)" }}>
         <div
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{ width: `${(current / total) * 100}%`, background: `linear-gradient(to right, ${color}88, ${color})` }}
         />
       </div>
-      <span className="text-xs font-semibold shrink-0 tabular-nums" style={{ color: "rgba(148,163,184,0.4)" }}>
+      <span className="text-xs font-semibold shrink-0 tabular-nums" style={{ color: "var(--text-3)" }}>
         {current}/{total}
       </span>
     </div>
@@ -395,7 +395,7 @@ function ResultScreen({ sit, score, answers, onReset }: {
             {/* Circle gauge */}
             <div className="relative shrink-0 mx-auto lg:mx-0" style={{ width: 120, height: 120 }}>
               <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90">
-                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="8" />
+                <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface-2)" strokeWidth="8" />
                 <circle
                   cx="60" cy="60" r="50" fill="none"
                   stroke={meta.color} strokeWidth="8" strokeLinecap="round"
@@ -406,7 +406,7 @@ function ResultScreen({ sit, score, answers, onReset }: {
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-3xl font-bold" style={{ fontFamily: "var(--font-heading)", color: meta.color }}>{pct}</span>
-                <span className="text-xs" style={{ color: "rgba(148,163,184,0.4)" }}>/ 100</span>
+                <span className="text-xs" style={{ color: "var(--text-3)" }}>/ 100</span>
               </div>
             </div>
 
@@ -416,10 +416,10 @@ function ResultScreen({ sit, score, answers, onReset }: {
                 style={{ background: `${meta.color}20`, color: meta.color, border: `1px solid ${meta.color}30` }}>
                 {meta.label}
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+              <h3 className="text-2xl lg:text-3xl font-bold mb-3" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                 {result.title}
               </h3>
-              <p className="text-sm leading-relaxed max-w-xl" style={{ color: "rgba(148,163,184,0.7)" }}>
+              <p className="text-sm leading-relaxed max-w-xl" style={{ color: "var(--text-2)" }}>
                 {result.text}
               </p>
             </div>
@@ -429,7 +429,7 @@ function ResultScreen({ sit, score, answers, onReset }: {
         {/* Answer recap */}
         <div style={{ borderTop: `1px solid ${meta.border}` }}>
           <div className="p-6 lg:p-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(148,163,184,0.3)" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "var(--text-3)" }}>
               Vaše odpovědi
             </p>
             <div className="space-y-3">
@@ -437,12 +437,12 @@ function ResultScreen({ sit, score, answers, onReset }: {
                 const chosen = q.options[answers[i]];
                 return (
                   <div key={i} className="flex items-start gap-3 p-3 rounded-xl"
-                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-                    <span className="text-xs font-bold w-5 shrink-0 mt-0.5" style={{ color: "rgba(148,163,184,0.3)" }}>{i + 1}</span>
+                    style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+                    <span className="text-xs font-bold w-5 shrink-0 mt-0.5" style={{ color: "var(--text-3)" }}>{i + 1}</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs leading-relaxed mb-1" style={{ color: "rgba(148,163,184,0.5)" }}>{q.text}</p>
+                      <p className="text-xs leading-relaxed mb-1" style={{ color: "var(--text-3)" }}>{q.text}</p>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-semibold" style={{ color: "#F1F5F9" }}>{chosen?.label}</span>
+                        <span className="text-xs font-semibold" style={{ color: "var(--text-1)" }}>{chosen?.label}</span>
                         <span className="text-xs px-1.5 py-0.5 rounded"
                           style={{ background: chosen?.score >= 3 ? "rgba(248,113,113,0.15)" : "rgba(52,211,153,0.1)", color: chosen?.score >= 3 ? "#F87171" : "#34D399" }}>
                           {chosen?.score} b.
@@ -464,19 +464,19 @@ function ResultScreen({ sit, score, answers, onReset }: {
           style={{ background: `linear-gradient(135deg,${meta.color}15,${meta.color}05)`, border: `1px solid ${meta.border}` }}>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: meta.color }}>Doporučený krok</p>
-            <p className="text-sm font-semibold" style={{ color: "#F1F5F9" }}>{tier === "low" ? "Číst relevantní analýzu" : "Průvodce výběrem manažera"}</p>
+            <p className="text-sm font-semibold" style={{ color: "var(--text-1)" }}>{tier === "low" ? "Číst relevantní analýzu" : "Průvodce výběrem manažera"}</p>
           </div>
           <ArrowRight size={18} style={{ color: meta.color }} />
         </Link>
 
         <button onClick={onReset}
           className="flex items-center justify-between p-5 rounded-2xl transition-all duration-300 hover:-translate-y-0.5"
-          style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+          style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
           <div className="text-left">
-            <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(148,163,184,0.35)" }}>Jiná situace?</p>
-            <p className="text-sm font-semibold" style={{ color: "#E2E8F0" }}>Zkusit jinou diagnostiku</p>
+            <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "var(--text-3)" }}>Jiná situace?</p>
+            <p className="text-sm font-semibold" style={{ color: "var(--text-1)" }}>Zkusit jinou diagnostiku</p>
           </div>
-          <RotateCcw size={16} style={{ color: "rgba(148,163,184,0.4)" }} />
+          <RotateCcw size={16} style={{ color: "var(--text-3)" }} />
         </button>
       </div>
     </div>
@@ -517,7 +517,7 @@ function Questionnaire({ sit, onBack, onFinish }: {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <button onClick={onBack} className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors hover:text-[#C9A84C]" style={{ color: "rgba(148,163,184,0.4)" }}>
+        <button onClick={onBack} className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors hover:text-[#C9A84C]" style={{ color: "var(--text-3)" }}>
           <ArrowLeft size={14} /> Zpět na výběr situace
         </button>
         <div className="flex items-center gap-3 mb-4">
@@ -531,15 +531,15 @@ function Questionnaire({ sit, onBack, onFinish }: {
 
       {/* Question card */}
       <div key={step} className="rounded-3xl p-7 lg:p-9 anim-fade-up"
-        style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+        style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
         <div className="mb-2">
-          <span className="text-xs font-bold" style={{ color: "rgba(148,163,184,0.3)" }}>Otázka {step + 1} z {sit.questions.length}</span>
+          <span className="text-xs font-bold" style={{ color: "var(--text-3)" }}>Otázka {step + 1} z {sit.questions.length}</span>
         </div>
-        <h2 className="text-xl lg:text-2xl font-bold mb-2 leading-snug" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+        <h2 className="text-xl lg:text-2xl font-bold mb-2 leading-snug" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
           {q.text}
         </h2>
         {q.hint && (
-          <p className="text-sm mb-6" style={{ color: "rgba(148,163,184,0.45)" }}>{q.hint}</p>
+          <p className="text-sm mb-6" style={{ color: "var(--text-3)" }}>{q.hint}</p>
         )}
 
         {/* Options */}
@@ -552,16 +552,16 @@ function Questionnaire({ sit, onBack, onFinish }: {
                 onClick={() => choose(i)}
                 className="w-full flex items-center gap-4 p-4 lg:p-5 rounded-2xl text-left transition-all duration-200 hover:-translate-x-1"
                 style={{
-                  background: isChosen ? `${sit.accentColor}12` : "rgba(255,255,255,0.03)",
-                  border: `1px solid ${isChosen ? sit.accentColor + "50" : "rgba(255,255,255,0.07)"}`,
+                  background: isChosen ? `${sit.accentColor}12` : "var(--surface)",
+                  border: `1px solid ${isChosen ? sit.accentColor + "50" : "var(--surface-2)"}`,
                   transform: isChosen ? "translateX(4px)" : undefined,
                 }}
               >
                 <div className="w-5 h-5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200"
-                  style={{ border: `2px solid ${isChosen ? sit.accentColor : "rgba(148,163,184,0.2)"}`, background: isChosen ? `${sit.accentColor}25` : "transparent" }}>
+                  style={{ border: `2px solid ${isChosen ? sit.accentColor : "var(--text-4)"}`, background: isChosen ? `${sit.accentColor}25` : "transparent" }}>
                   {isChosen && <div className="w-2 h-2 rounded-full" style={{ background: sit.accentColor }} />}
                 </div>
-                <span className="text-sm font-medium leading-relaxed flex-1" style={{ color: isChosen ? "#F1F5F9" : "rgba(148,163,184,0.7)" }}>
+                <span className="text-sm font-medium leading-relaxed flex-1" style={{ color: isChosen ? "var(--text-1)" : "var(--text-2)" }}>
                   {opt.label}
                 </span>
               </button>
@@ -576,7 +576,7 @@ function Questionnaire({ sit, onBack, onFinish }: {
           <button
             onClick={() => { setStep(s => s - 1); setSelected(answers[step - 1] ?? null); setAnswers(a => a.slice(0, -1)); }}
             className="inline-flex items-center gap-2 px-4 py-2.5 text-sm rounded-xl transition-all duration-200"
-            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", color: "rgba(148,163,184,0.55)" }}>
+            style={{ background: "var(--surface)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
             <ArrowLeft size={14} /> Předchozí
           </button>
         ) : <div />}
@@ -586,10 +586,10 @@ function Questionnaire({ sit, onBack, onFinish }: {
           disabled={selected === null}
           className="inline-flex items-center gap-2 px-7 py-2.5 text-sm font-bold rounded-xl transition-all duration-300"
           style={{
-            background: selected !== null ? `linear-gradient(135deg, ${sit.accentColor}, ${sit.accentColor}bb)` : "rgba(255,255,255,0.04)",
-            color: selected !== null ? "#fff" : "rgba(148,163,184,0.3)",
+            background: selected !== null ? `linear-gradient(135deg, ${sit.accentColor}, ${sit.accentColor}bb)` : "var(--surface)",
+            color: selected !== null ? "#fff" : "var(--text-3)",
             cursor: selected !== null ? "pointer" : "not-allowed",
-            border: `1px solid ${selected !== null ? "transparent" : "rgba(255,255,255,0.06)"}`,
+            border: `1px solid ${selected !== null ? "transparent" : "var(--surface-2)"}`,
             boxShadow: selected !== null ? `0 0 20px ${sit.accentColor}30` : "none",
           }}>
           {isLast ? "Zobrazit výsledek" : "Další otázka"} <ArrowRight size={14} />
@@ -608,7 +608,7 @@ function SituationPicker({ onSelect }: { onSelect: (s: Situation) => void }) {
         <h2 className="text-3xl lg:text-4xl font-bold mb-4 leading-tight" style={{ fontFamily: "var(--font-heading)" }}>
           Vyberte situaci vaší firmy
         </h2>
-        <p className="text-base leading-relaxed max-w-xl" style={{ color: "rgba(148,163,184,0.55)" }}>
+        <p className="text-base leading-relaxed max-w-xl" style={{ color: "var(--text-2)" }}>
           Každá situace má vlastní dotazník. Na základě vašich odpovědí vyhodnotíme,
           zda a jaký typ interim managementu dává smysl.
         </p>
@@ -620,7 +620,7 @@ function SituationPicker({ onSelect }: { onSelect: (s: Situation) => void }) {
             key={sit.id}
             onClick={() => onSelect(sit)}
             className="group relative text-left rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
-            style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ border: "1px solid var(--border)" }}
           >
             {/* Image bg */}
             <div className="relative h-36 overflow-hidden">
@@ -630,7 +630,7 @@ function SituationPicker({ onSelect }: { onSelect: (s: Situation) => void }) {
             </div>
 
             {/* Content */}
-            <div className="p-5" style={{ background: "rgba(255,255,255,0.04)" }}>
+            <div className="p-5" style={{ background: "var(--surface)" }}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
                   style={{ background: `${sit.accentColor}18`, border: `1px solid ${sit.accentColor}30` }}>
@@ -640,10 +640,10 @@ function SituationPicker({ onSelect }: { onSelect: (s: Situation) => void }) {
                   {sit.questions.length} otázek
                 </span>
               </div>
-              <h3 className="text-base font-bold mb-1.5 leading-snug" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+              <h3 className="text-base font-bold mb-1.5 leading-snug" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                 {sit.title}
               </h3>
-              <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(148,163,184,0.5)" }}>
+              <p className="text-xs leading-relaxed mb-4" style={{ color: "var(--text-3)" }}>
                 {sit.subtitle}
               </p>
               <div className="flex items-center gap-2 text-xs font-semibold transition-colors group-hover:text-white"
@@ -657,15 +657,15 @@ function SituationPicker({ onSelect }: { onSelect: (s: Situation) => void }) {
 
       {/* Info strip */}
       <div className="mt-8 flex flex-wrap items-center gap-6 p-5 rounded-2xl"
-        style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.05)" }}>
+        style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
         {[
           { icon: Clock, text: "Každý dotazník trvá 2–3 minuty" },
           { icon: Target, text: "Personalizovaný výsledek s doporučením" },
           { icon: CheckCircle2, text: "Bez registrace, okamžitě" },
         ].map(({ icon: Icon, text }) => (
           <div key={text} className="flex items-center gap-2">
-            <Icon size={13} style={{ color: "rgba(201,168,76,0.5)" }} />
-            <span className="text-xs" style={{ color: "rgba(148,163,184,0.4)" }}>{text}</span>
+            <Icon size={13} style={{ color: "rgba(var(--accent-rgb),0.5)" }} />
+            <span className="text-xs" style={{ color: "var(--text-3)" }}>{text}</span>
           </div>
         ))}
       </div>
@@ -680,15 +680,15 @@ export default function DiagnostikaPage() {
   const [view, setView] = useState<View>({ stage: "pick" });
 
   return (
-    <div style={{ background: "#07090F", minHeight: "100vh" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
       {/* HERO */}
-      <div className="relative overflow-hidden pt-16" style={{ background: "#0D1120" }}>
+      <div className="relative overflow-hidden pt-16" style={{ background: "var(--bg)" }}>
         <Image src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1920&q=80"
           alt="Executive diagnostika" fill className="object-cover opacity-15" sizes="100vw" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #07090F 0%, rgba(7,9,15,0.75) 40%, rgba(7,9,15,0.4) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--bg) 0%, rgba(7,9,15,0.75) 40%, rgba(7,9,15,0.2) 100%)" }} />
         <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent)" }} />
         {/* Bottom fade to page background */}
-        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, #07090F)", zIndex: 10 }} />
+        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, var(--bg))", zIndex: 10 }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-20 lg:pt-24 lg:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -698,7 +698,7 @@ export default function DiagnostikaPage() {
                 Je interim management<br />
                 <span className="gold-shimmer">správný pro vás?</span>
               </h1>
-              <p className="text-lg leading-relaxed" style={{ color: "rgba(148,163,184,0.55)", maxWidth: "440px" }}>
+              <p className="text-lg leading-relaxed" style={{ color: "var(--text-2)", maxWidth: "440px" }}>
                 Vyberte situaci a projděte si 5 cílených otázek.
                 Dostanete personalizované vyhodnocení s konkrétním doporučením.
               </p>
@@ -708,15 +708,15 @@ export default function DiagnostikaPage() {
               {situations.map(sit => (
                 <button key={sit.id} onClick={() => setView({ stage: "quiz", sit })}
                   className="group flex items-center gap-3 p-4 rounded-2xl text-left transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                  style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
                     style={{ background: `${sit.accentColor}15` }}>
                     <sit.icon size={14} style={{ color: sit.accentColor }} />
                   </div>
-                  <span className="text-xs font-semibold leading-snug" style={{ color: "rgba(241,245,249,0.7)", fontFamily: "var(--font-heading)" }}>
+                  <span className="text-xs font-semibold leading-snug" style={{ color: "var(--text-2)", fontFamily: "var(--font-heading)" }}>
                     {sit.title}
                   </span>
-                  <ChevronRight size={12} className="ml-auto shrink-0 group-hover:translate-x-0.5 transition-transform" style={{ color: "rgba(148,163,184,0.25)" }} />
+                  <ChevronRight size={12} className="ml-auto shrink-0 group-hover:translate-x-0.5 transition-transform" style={{ color: "var(--text-4)" }} />
                 </button>
               ))}
             </div>
@@ -760,16 +760,16 @@ export default function DiagnostikaPage() {
             <div className="absolute inset-0" style={{ background: "rgba(7,9,15,0.88)" }} />
             <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 p-10 lg:p-12">
               <div>
-                <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+                <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
                   Víte, co hledáte?
                 </h3>
-                <p className="text-sm" style={{ color: "rgba(148,163,184,0.5)" }}>
+                <p className="text-sm" style={{ color: "var(--text-3)" }}>
                   Přejděte rovnou na kritéria a otázky pro výběr manažera.
                 </p>
               </div>
               <Link href="/jak-vybirat"
                 className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-[0_0_28px_rgba(201,168,76,0.25)]"
-                style={{ background: "linear-gradient(135deg,#C9A84C,#8A6820)", color: "#fff" }}>
+                style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))", color: "#fff" }}>
                 Průvodce výběrem <ArrowRight size={16} />
               </Link>
             </div>
