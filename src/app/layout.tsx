@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BannerStickyBottom } from "@/components/Banners";
+import { ThemeProvider } from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: {
@@ -26,13 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className="h-full antialiased">
-      <body className="min-h-screen flex flex-col" style={{ background: "#07090F", color: "#F1F5F9" }}>
-        <Navbar />
-        <main className="flex-1 pb-16 lg:pb-0">
-          {children}
-        </main>
-        <Footer />
-        <BannerStickyBottom />
+      <body className="min-h-screen flex flex-col" style={{ background: "var(--bg)", color: "var(--text-1)" }}>
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1 pb-16 lg:pb-0">
+            {children}
+          </main>
+          <Footer />
+          <BannerStickyBottom />
+        </ThemeProvider>
       </body>
     </html>
   );

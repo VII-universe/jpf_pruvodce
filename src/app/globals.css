@@ -1,91 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
 @import "tailwindcss";
 
-/* ── Design tokens ─────────────────────────────── */
-@theme inline {
-  --bg-base:    #07090F;
-  --bg-raised:  #0D1120;
-  --bg-overlay: #111827;
+/* ════════════════════════════════════════════════════════
+   DESIGN TOKENS — Dark theme (default)
+════════════════════════════════════════════════════════ */
+:root {
+  --bg:         #07090F;
+  --bg-raised:  #07090F;
+  --surface:    rgba(255,255,255,0.045);
+  --surface-2:  rgba(255,255,255,0.07);
+  --border:     rgba(255,255,255,0.08);
+  --border-2:   rgba(255,255,255,0.13);
 
-  --glass-fill:   rgba(255,255,255,0.045);
-  --glass-fill-hover: rgba(255,255,255,0.075);
-  --glass-border: rgba(255,255,255,0.09);
-  --glass-border-hover: rgba(255,255,255,0.18);
+  --text-1:     #F1F5F9;
+  --text-2:     rgba(148,163,184,0.75);
+  --text-3:     rgba(148,163,184,0.42);
+  --text-4:     rgba(148,163,184,0.25);
 
-  --text-primary:   #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-muted:     #4B5563;
+  --accent:       #C9A84C;
+  --accent-light: #E4C76B;
+  --accent-dark:  #8A6820;
+  --accent-rgb:   201,168,76;
+  --accent-glow:  rgba(201,168,76,0.18);
+  --accent-subtle:rgba(201,168,76,0.08);
 
-  --gold:       #C9A84C;
-  --gold-light: #E4C76B;
-  --gold-glow:  rgba(201,168,76,0.18);
+  --nav-bg:     rgba(7,9,15,0.92);
+  --nav-border: rgba(255,255,255,0.07);
+  --nav-text:   rgba(241,245,249,0.55);
+  --nav-active: #F1F5F9;
 
-  --border-dim: rgba(255,255,255,0.06);
+  --card-bg:    rgba(255,255,255,0.04);
+  --card-bg-hover: rgba(255,255,255,0.07);
 
-  --shadow-glass: 0 4px 24px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.05) inset;
-  --shadow-hover: 0 8px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.1);
+  --font-heading: 'Poppins', -apple-system, sans-serif;
+  --font-sans:    'Inter', -apple-system, sans-serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
 
-  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --heading-transform: none;
+  --heading-spacing:   -0.02em;
+  --section-rule:      1px solid rgba(201,168,76,0.18);
+  --eyebrow-color:     var(--accent);
 }
 
-/* ── Reset & base ──────────────────────────────── */
+/* ════════════════════════════════════════════════════════
+   DESIGN TOKENS — Politico light theme
+════════════════════════════════════════════════════════ */
+[data-theme="politico"] {
+  --bg:         #FFFFFF;
+  --bg-raised:  #F5F5F5;
+  --surface:    rgba(0,0,0,0.03);
+  --surface-2:  rgba(0,0,0,0.055);
+  --border:     rgba(0,0,0,0.1);
+  --border-2:   rgba(0,0,0,0.18);
+
+  --text-1:     #111111;
+  --text-2:     rgba(17,17,17,0.62);
+  --text-3:     rgba(17,17,17,0.38);
+  --text-4:     rgba(17,17,17,0.22);
+
+  --accent:       #CC2200;
+  --accent-light: #E83A1A;
+  --accent-dark:  #A01A00;
+  --accent-rgb:   204,34,0;
+  --accent-glow:  rgba(204,34,0,0.1);
+  --accent-subtle:rgba(204,34,0,0.06);
+
+  --nav-bg:     #111111;
+  --nav-border: rgba(255,255,255,0.1);
+  --nav-text:   rgba(255,255,255,0.7);
+  --nav-active: #FFFFFF;
+
+  --card-bg:    rgba(0,0,0,0.02);
+  --card-bg-hover: rgba(0,0,0,0.04);
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-sans:    'Source Serif 4', Georgia, serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+
+  --heading-transform: none;
+  --heading-spacing:   -0.01em;
+  --section-rule:      2px solid #CC2200;
+  --eyebrow-color:     #CC2200;
+}
+
+/* ════════════════════════════════════════════════════════
+   BASE
+════════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: #07090F;
-  color: #F1F5F9;
-  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-heading);
   line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: #F1F5F9;
+  letter-spacing: var(--heading-spacing);
+  color: var(--text-1);
 }
 
-/* ── Glass card ────────────────────────────────── */
+/* Politico: stronger typographic hierarchy */
+[data-theme="politico"] h1,
+[data-theme="politico"] h2 { font-style: italic; }
+[data-theme="politico"] h3,
+[data-theme="politico"] h4 { font-style: normal; }
+
+/* ════════════════════════════════════════════════════════
+   UTILITY CLASSES (theme-aware)
+════════════════════════════════════════════════════════ */
+.t-bg       { background: var(--bg) !important; }
+.t-surface  { background: var(--surface) !important; }
+.t-border   { border-color: var(--border) !important; }
+.t-text-1   { color: var(--text-1) !important; }
+.t-text-2   { color: var(--text-2) !important; }
+.t-text-3   { color: var(--text-3) !important; }
+.t-accent   { color: var(--accent) !important; }
+
+/* ════════════════════════════════════════════════════════
+   COMPONENT PATTERNS (theme-aware)
+════════════════════════════════════════════════════════ */
+
+/* Glass card → flat card in Politico */
 .glass {
-  background: var(--glass-fill);
+  background: var(--surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border);
 }
+[data-theme="politico"] .glass {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
 .glass-hover {
-  background: var(--glass-fill);
+  background: var(--surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border);
   transition: background 200ms ease, border-color 200ms ease, transform 250ms cubic-bezier(0.16,1,0.3,1), box-shadow 250ms ease;
 }
 .glass-hover:hover {
-  background: var(--glass-fill-hover);
-  border-color: var(--glass-border-hover);
+  background: var(--card-bg-hover);
+  border-color: var(--border-2);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
 }
+[data-theme="politico"] .glass-hover { backdrop-filter: none; -webkit-backdrop-filter: none; }
 
-/* ── Gold shimmer text ─────────────────────────── */
-.gold-shimmer {
-  background: linear-gradient(90deg, #C9A84C 0%, #E4C76B 40%, #C9A84C 80%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-
-/* ── Eyebrow label ─────────────────────────────── */
+/* Eyebrow */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #C9A84C;
+  color: var(--eyebrow-color);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -96,41 +174,23 @@ h1,h2,h3,h4,h5,h6 {
   display: block;
   width: 28px;
   height: 1.5px;
-  background: #C9A84C;
+  background: var(--eyebrow-color);
   flex-shrink: 0;
 }
+[data-theme="politico"] .eyebrow { font-family: 'Inter', sans-serif; }
 
-/* ── Animations ────────────────────────────────── */
-@keyframes shimmer {
-  from { background-position: -200% center; }
-  to   { background-position:  200% center; }
-}
-@keyframes fade-up {
-  from { opacity:0; transform:translateY(20px); }
-  to   { opacity:1; transform:translateY(0);    }
-}
-@keyframes blob-drift {
-  0%,100% { transform: translate(0,0)   scale(1);    }
-  33%     { transform: translate(4%,3%) scale(1.06); }
-  66%     { transform: translate(-3%,4%) scale(0.97); }
-}
-.anim-fade-up   { animation: fade-up 0.55s ease both; }
-.anim-delay-1   { animation-delay: 0.1s; }
-.anim-delay-2   { animation-delay: 0.22s; }
-.anim-delay-3   { animation-delay: 0.38s; }
-
-/* ── Image overlays ────────────────────────────── */
-.overlay-full {
-  background: linear-gradient(to top, #07090F 0%, rgba(7,9,15,0.7) 50%, rgba(7,9,15,0.25) 100%);
-}
-.overlay-side {
-  background: linear-gradient(to right, rgba(7,9,15,0) 0%, rgba(7,9,15,0.85) 55%, #07090F 100%);
+/* Gold/accent shimmer */
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 40%, var(--accent) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
 }
 
-/* ── Section divider gradient ──────────────────── */
-.section-glow {
-  position: relative;
-}
+/* Section divider */
+.section-glow { position: relative; }
 .section-glow::before {
   content: '';
   position: absolute;
@@ -138,26 +198,132 @@ h1,h2,h3,h4,h5,h6 {
   transform: translateX(-50%);
   width: 60%;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent);
+  background: linear-gradient(to right, transparent, rgba(var(--accent-rgb),0.3), transparent);
 }
 
-/* ── Prose ─────────────────────────────────────── */
-.prose-dark p  { color:#94A3B8; font-size:1.0625rem; line-height:1.85; margin-bottom:1.5rem; }
-.prose-dark h2 { color:#F1F5F9; font-family:var(--font-heading); font-size:1.7rem; font-weight:700; margin-top:3rem; margin-bottom:1rem; }
-.prose-dark h3 { color:#F1F5F9; font-family:var(--font-heading); font-size:1.25rem; font-weight:700; margin-top:2.5rem; margin-bottom:0.75rem; }
-.prose-dark blockquote { border-left:3px solid #C9A84C; padding-left:1.5rem; margin:2rem 0; font-family:var(--font-heading); font-size:1.1rem; font-style:italic; color:#E2E8F0; }
+/* Politico section rule — strong red rule at top */
+[data-theme="politico"] .section-glow::before {
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 0;
+}
 
-/* ── Scrollbar ─────────────────────────────────── */
-::-webkit-scrollbar       { width:5px; }
-::-webkit-scrollbar-track { background:#07090F; }
-::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:3px; }
+/* Prose editorial */
+.prose-dark p  { color: var(--text-2); font-size:1.0625rem; line-height:1.85; margin-bottom:1.5rem; }
+.prose-dark h2 { color: var(--text-1); font-family:var(--font-heading); font-size:1.7rem; font-weight:700; margin-top:3rem; margin-bottom:1rem; }
+.prose-dark h3 { color: var(--text-1); font-family:var(--font-heading); font-size:1.25rem; font-weight:700; margin-top:2.5rem; margin-bottom:0.75rem; }
+.prose-dark blockquote { border-left:3px solid var(--accent); padding-left:1.5rem; margin:2rem 0; font-family:var(--font-serif); font-size:1.1rem; font-style:italic; color:var(--text-1); }
 
-/* ── Selection ─────────────────────────────────── */
-::selection { background:rgba(201,168,76,0.2); color:#F1F5F9; }
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════════════════════════ */
+@keyframes shimmer { from { background-position: -200% center; } to { background-position: 200% center; } }
+@keyframes fade-up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes blob-drift {
+  0%,100% { transform:translate(0,0) scale(1); }
+  33%     { transform:translate(4%,3%) scale(1.06); }
+  66%     { transform:translate(-3%,4%) scale(0.97); }
+}
+.anim-fade-up   { animation: fade-up 0.55s ease both; }
+.anim-delay-1   { animation-delay: 0.1s; }
+.anim-delay-2   { animation-delay: 0.22s; }
+.anim-delay-3   { animation-delay: 0.38s; }
+
+/* ════════════════════════════════════════════════════════
+   POLITICO — global overrides
+════════════════════════════════════════════════════════ */
+
+/* All dark section backgrounds → light */
+[data-theme="politico"] [style*="#07090F"],
+[data-theme="politico"] [style*="#0D1120"],
+[data-theme="politico"] [style*="#0A0F1E"],
+[data-theme="politico"] [style*="#0a0f1e"] {
+  background: var(--bg) !important;
+  color: var(--text-1) !important;
+}
+
+/* Dark card surfaces → light surfaces */
+[data-theme="politico"] [style*="rgba(255,255,255,0.04)"],
+[data-theme="politico"] [style*="rgba(255,255,255,0.03)"],
+[data-theme="politico"] [style*="rgba(255,255,255,0.05)"] {
+  background: var(--surface) !important;
+}
+
+/* Borders on white bg */
+[data-theme="politico"] [style*="rgba(255,255,255,0.07)"],
+[data-theme="politico"] [style*="rgba(255,255,255,0.08)"],
+[data-theme="politico"] [style*="rgba(255,255,255,0.09)"],
+[data-theme="politico"] [style*="rgba(255,255,255,0.1)"],
+[data-theme="politico"] [style*="rgba(255,255,255,0.06)"] {
+  border-color: var(--border) !important;
+}
+
+/* White/light text → dark text */
+[data-theme="politico"] [style*="color: \"#F1F5F9\""],
+[data-theme="politico"] [style*="color: \"#E2E8F0\""],
+[data-theme="politico"] [style*="color: \"#CBD5E1\""] {
+  color: var(--text-1) !important;
+}
+[data-theme="politico"] [style*="#F1F5F9"] { color: var(--text-1) !important; }
+[data-theme="politico"] [style*="#E2E8F0"] { color: var(--text-1) !important; }
+
+/* Slate/muted text */
+[data-theme="politico"] [style*="rgba(148,163,184"] { color: var(--text-2) !important; }
+
+/* Gold accent → red */
+[data-theme="politico"] [style*="#C9A84C"] { color: var(--accent) !important; }
+[data-theme="politico"] [style*="#E4C76B"] { color: var(--accent) !important; }
+
+/* Gradient backgrounds using accent */
+[data-theme="politico"] [style*="linear-gradient(135deg, #C9A84C"],
+[data-theme="politico"] [style*="linear-gradient(135deg,#C9A84C"] {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+}
+
+/* Dark raised sections */
+[data-theme="politico"] [style*="#0D1120"],
+[data-theme="politico"] [style*="#0a0d1a"],
+[data-theme="politico"] [style*="#10120A"],
+[data-theme="politico"] [style*="#120E00"] {
+  background: var(--bg-raised) !important;
+}
+
+/* Image overlays — Politico keeps photos but lightens them for white page */
+[data-theme="politico"] .overlay-full,
+[data-theme="politico"] [style*="rgba(7,9,15,0.9"],
+[data-theme="politico"] [style*="rgba(7,9,15,0.8"],
+[data-theme="politico"] [style*="rgba(7,9,15,0.88"],
+[data-theme="politico"] [style*="rgba(7,9,15,0.92"] {
+  background: rgba(255,255,255,0.0) !important;
+}
+
+/* Hero image sections — Politico makes them lighter for editorial feel */
+[data-theme="politico"] .hero-overlay {
+  background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.0) 100%) !important;
+}
+
+/* Sticky bottom banner */
+[data-theme="politico"] .sticky-banner-bg {
+  background: rgba(17,17,17,0.97) !important;
+}
+
+/* Footer */
+[data-theme="politico"] footer { background: #111111 !important; }
+[data-theme="politico"] footer * { --text-1: #F1F5F9; --text-2: rgba(241,245,249,0.5); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(var(--accent-rgb),0.15); color: var(--text-1); }
 
 a { transition: color 180ms ease; }
+
 .footer-link { color: rgba(148,163,184,0.45); }
-.footer-link:hover { color: #C9A84C; }
+.footer-link:hover { color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
