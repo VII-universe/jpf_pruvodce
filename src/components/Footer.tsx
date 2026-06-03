@@ -21,7 +21,7 @@ export default function Footer() {
       {/* Gold gradient line */}
       <div style={{ height: "1px", background: "linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent)" }} />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
@@ -73,7 +73,7 @@ export default function Footer() {
       </div>
 
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p style={{ color: "rgba(148,163,184,0.25)", fontSize: "0.72rem" }}>
             © {new Date().getFullYear()} Interim Management CZ — vzdělávací portál
           </p>

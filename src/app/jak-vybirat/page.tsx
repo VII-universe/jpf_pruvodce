@@ -146,19 +146,19 @@ function QuestionCard({ q, why, signal, n, isOpen, onToggle }: {
       style={{ background: isOpen ? "rgba(201,168,76,0.07)" : "rgba(255,255,255,0.04)", border: `1px solid ${isOpen ? "rgba(201,168,76,0.3)" : "rgba(255,255,255,0.07)"}` }}
       onClick={onToggle}
     >
-      <div className="flex items-center gap-5 p-6">
+      <div className="flex items-start gap-3 sm:gap-5 p-4 sm:p-6">
         <span
-          className="text-4xl font-bold shrink-0 w-12 leading-none tabular-nums"
+          className="text-2xl sm:text-4xl font-bold shrink-0 w-8 sm:w-12 leading-tight tabular-nums pt-0.5"
           style={{ fontFamily: "var(--font-heading)", color: isOpen ? "#C9A84C" : "rgba(148,163,184,0.2)" }}
         >
           {n}
         </span>
-        <p className="flex-1 text-base font-bold leading-snug" style={{ fontFamily: "var(--font-heading)", color: isOpen ? "#F1F5F9" : "#CBD5E1" }}>
+        <p className="flex-1 text-sm sm:text-base font-bold leading-snug" style={{ fontFamily: "var(--font-heading)", color: isOpen ? "#F1F5F9" : "#CBD5E1" }}>
           {q}
         </p>
         <ChevronDown
-          size={18}
-          className="shrink-0 transition-transform duration-300"
+          size={16}
+          className="shrink-0 transition-transform duration-300 mt-1"
           style={{ color: isOpen ? "#C9A84C" : "rgba(148,163,184,0.3)", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </div>
@@ -272,7 +272,7 @@ export default function JakVybiratPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-24 py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-14 lg:space-y-24 py-14 lg:py-28">
 
         {/* ── 4 CRITERIA ── */}
         <section id="kriteria">

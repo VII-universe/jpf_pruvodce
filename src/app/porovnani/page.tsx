@@ -120,7 +120,7 @@ export default function PorovnaniPage() {
         <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent)" }} />
         <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 120, background: "linear-gradient(to bottom, transparent, #07090F)", zIndex: 10 }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-20 lg:pt-24 lg:pb-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-20 pb-20 lg:pt-24 lg:pb-24">
           <div className="max-w-3xl">
             <div className="eyebrow mb-5">Nezávislé srovnání</div>
             <h1 className="text-4xl lg:text-6xl font-bold leading-[1.05] mb-5 tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
@@ -135,7 +135,7 @@ export default function PorovnaniPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pb-20 space-y-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pb-20 space-y-14 lg:space-y-20">
 
         {/* ── RANKING CARDS ── */}
         <section>
@@ -146,12 +146,23 @@ export default function PorovnaniPage() {
 
           <div className="space-y-4">
             {sorted.map((p, idx) => (
-              <div key={p.id} className="rounded-3xl overflow-hidden"
+              <div key={p.id} className="rounded-2xl lg:rounded-3xl overflow-hidden"
                 style={{ background: p.badge ? "linear-gradient(to right, rgba(201,168,76,0.08), rgba(255,255,255,0.03))" : "rgba(255,255,255,0.04)", border: `1px solid ${p.badge ? "rgba(201,168,76,0.25)" : "rgba(255,255,255,0.07)"}` }}>
+
+                {/* Mobile-only compact header row */}
+                <div className="flex items-center gap-3 px-5 py-4 lg:hidden" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <span className="text-xl font-bold shrink-0" style={{ fontFamily: "var(--font-heading)", color: idx === 0 ? "#C9A84C" : "rgba(148,163,184,0.2)" }}>#{idx + 1}</span>
+                  <h3 className="text-base font-bold flex-1" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{p.title}</h3>
+                  <div className="flex flex-col items-end shrink-0">
+                    <span className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)", color: p.color }}>{p.score}</span>
+                    <span className="text-[10px]" style={{ color: "rgba(148,163,184,0.35)" }}>/ 100</span>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-[64px_1fr_340px] items-stretch">
 
-                  {/* Rank number */}
-                  <div className="flex items-center justify-center py-4 lg:py-0"
+                  {/* Rank number — desktop only */}
+                  <div className="hidden lg:flex items-center justify-center"
                     style={{ background: idx === 0 ? "rgba(201,168,76,0.1)" : "rgba(255,255,255,0.02)", borderRight: "1px solid rgba(255,255,255,0.06)" }}>
                     <span className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: idx === 0 ? "#C9A84C" : "rgba(148,163,184,0.2)" }}>
                       #{idx + 1}
@@ -159,7 +170,7 @@ export default function PorovnaniPage() {
                   </div>
 
                   {/* Main content */}
-                  <div className="p-6 lg:p-8">
+                  <div className="p-5 lg:p-8">
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <h3 className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>{p.title}</h3>
                       {p.badge && (
@@ -200,8 +211,8 @@ export default function PorovnaniPage() {
                     </p>
                   </div>
 
-                  {/* Score panel */}
-                  <div className="p-6 lg:p-8 flex flex-col items-center justify-center gap-5"
+                  {/* Score panel — desktop only */}
+                  <div className="hidden lg:flex p-8 flex-col items-center justify-center gap-5"
                     style={{ borderLeft: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
                     {/* Circle score */}
                     <div className="relative" style={{ width: 100, height: 100 }}>
@@ -254,8 +265,9 @@ export default function PorovnaniPage() {
             Váha kritéria odráží jeho dopad na výsledky projektu.
           </p>
 
-          {/* Table */}
-          <div className="rounded-3xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
+          {/* Table — horizontally scrollable on mobile */}
+          <div className="overflow-x-auto -mx-4 sm:-mx-6 lg:mx-0 px-4 sm:px-6 lg:px-0">
+          <div className="rounded-2xl lg:rounded-3xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)", minWidth: 620 }}>
             {/* Header */}
             <div className="grid gap-px" style={{ gridTemplateColumns: "1fr repeat(4, minmax(0, 1fr))", background: "rgba(255,255,255,0.04)" }}>
               <div className="p-4 lg:p-5" style={{ background: "#07090F" }}>
@@ -317,6 +329,7 @@ export default function PorovnaniPage() {
               ))}
             </div>
           </div>
+          </div>{/* end scroll wrapper */}
 
           {/* Legend */}
           <div className="mt-5 flex flex-wrap items-center gap-6 px-2">

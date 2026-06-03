@@ -51,7 +51,7 @@ export default function HomePage() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(7,9,15,0.97) 0%, rgba(7,9,15,0.88) 50%, rgba(7,9,15,0.55) 100%)" }} />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%)" }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-24 pb-16 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 pb-16 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
             {/* Left: headline */}
@@ -112,8 +112,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: situation quick-picks */}
-            <div className="lg:col-span-5">
+            {/* Right: situation quick-picks — hidden on mobile */}
+            <div className="hidden lg:block lg:col-span-5">
               <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "rgba(148,163,184,0.3)" }}>
                 Vaše situace?
               </p>
@@ -148,7 +148,7 @@ export default function HomePage() {
           WHAT MAKES INTERIM DIFFERENT — 3 columns
       ───────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-24" style={{ background: "#07090F" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
@@ -181,7 +181,7 @@ export default function HomePage() {
           FEATURED ARTICLES
       ───────────────────────────────────────────────────── */}
       <section className="section-glow py-20 lg:py-28" style={{ background: "#07090F" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-end justify-between mb-10">
             <div>
               <div className="eyebrow mb-4">Magazín</div>
@@ -249,7 +249,7 @@ export default function HomePage() {
           LEADERBOARD BANNER
       ───────────────────────────────────────────────────── */}
       <section className="py-10 lg:py-12" style={{ background: "#07090F" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <BannerLeaderboard />
         </div>
       </section>
@@ -258,7 +258,7 @@ export default function HomePage() {
           COMPARISON TEASER
       ───────────────────────────────────────────────────── */}
       <section className="py-16 section-glow" style={{ background: "#07090F" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="rounded-3xl overflow-hidden" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Left */}
@@ -327,7 +327,7 @@ export default function HomePage() {
           HOW TO CHOOSE — 4 questions
       ───────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28 section-glow" style={{ background: "#07090F" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
               <div className="eyebrow mb-5">Jak vybírat</div>
@@ -368,7 +368,7 @@ export default function HomePage() {
           PHOTO STRIP
       ───────────────────────────────────────────────────── */}
       <section className="pb-20" style={{ background: "#07090F" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-3 gap-3 h-52 lg:h-64 rounded-2xl overflow-hidden">
             {[
               { src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80", alt: "Strategické plánování" },

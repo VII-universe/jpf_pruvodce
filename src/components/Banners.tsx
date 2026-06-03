@@ -207,40 +207,40 @@ export function BannerLeaderboard() {
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 100% at 0% 50%, rgba(201,168,76,0.07) 0%, transparent 60%)" }} />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(to right, transparent, rgba(201,168,76,0.4) 40%, rgba(201,168,76,0.4) 60%, transparent)" }} />
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-6 px-7 py-6 lg:px-8 lg:py-7">
+      <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-5 px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-7">
         {/* Left */}
-        <div className="flex items-start lg:items-center gap-5">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", boxShadow: "0 0 20px rgba(201,168,76,0.25)" }}>
-            <span className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-heading)" }}>IM</span>
+        <div className="flex items-start gap-4 flex-1 min-w-0">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", boxShadow: "0 0 20px rgba(201,168,76,0.25)" }}>
+            <span className="text-white font-bold text-xs" style={{ fontFamily: "var(--font-heading)" }}>IM</span>
           </div>
-          <div>
+          <div className="min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-1" style={{ color: "rgba(201,168,76,0.45)" }}>
               Doporučený partner · Inzerce
             </span>
-            <p className="text-sm lg:text-base font-semibold leading-snug mb-1" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+            <p className="text-sm font-semibold leading-snug mb-1" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
               Senior interim management pro střední firmy — s týmovým zázemím a smluvními KPI
             </p>
-            <p className="text-xs" style={{ color: "rgba(148,163,184,0.5)" }}>
-              Zastupitelnost · Procesní standardizace · Měřitelné výsledky · 90 dní do první zpětné vazby
+            <p className="text-xs hidden sm:block" style={{ color: "rgba(148,163,184,0.5)" }}>
+              Zastupitelnost · Procesní standardizace · Měřitelné výsledky
             </p>
           </div>
         </div>
 
-        {/* Right: CTAs */}
-        <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 lg:min-w-[160px]">
+        {/* CTAs */}
+        <div className="flex flex-row sm:flex-col gap-2.5 sm:min-w-[148px] w-full sm:w-auto">
           <Link
             href="/diagnostika"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-200"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-200"
             style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", color: "#fff", boxShadow: "0 2px 14px rgba(201,168,76,0.22)" }}
           >
-            Bezplatná konzultace <ArrowRight size={12} />
+            Konzultace <ArrowRight size={11} />
           </Link>
           <Link
             href="/porovnani"
-            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-200"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-200"
             style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)", color: "rgba(241,245,249,0.55)" }}
           >
-            Porovnat poskytovatele
+            Porovnat
           </Link>
         </div>
       </div>

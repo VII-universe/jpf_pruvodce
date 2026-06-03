@@ -182,7 +182,7 @@ export default function MagazinPage() {
       <div className="relative overflow-hidden" style={{ background: "#0D1120" }}>
         {/* Bottom fade to page background */}
         <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 80, background: "linear-gradient(to bottom, transparent, #07090F)", zIndex: 10 }} />
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-20 pb-5">
           <div className="flex flex-col lg:flex-row lg:items-end gap-6">
             <div className="flex-1">
               <div className="eyebrow mb-3">Magazín</div>
@@ -288,7 +288,7 @@ export default function MagazinPage() {
       </div>
 
       {/* ── CONTENT ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 lg:py-14">
 
         {/* ── SEARCH/FILTER RESULTS VIEW ── */}
         {isFiltering ? (
