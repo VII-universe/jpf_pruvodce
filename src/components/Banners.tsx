@@ -191,9 +191,66 @@ export function BannerStickyBottom() {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
+   4. LEADERBOARD — větší, plnohodnotná reklamní plocha s metrikami
+   Používá se: homepage (sekce), diagnostika, jak-vybirat, porovnani, magazin
+───────────────────────────────────────────────────────────────────── */
+export function BannerLeaderboard() {
+  return (
+    <div
+      className="relative overflow-hidden rounded-2xl"
+      style={{
+        background: "linear-gradient(135deg, #10120A 0%, #0A0D1A 100%)",
+        border: "1px solid rgba(201,168,76,0.2)",
+      }}
+    >
+      {/* Subtle glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 100% at 0% 50%, rgba(201,168,76,0.07) 0%, transparent 60%)" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(to right, transparent, rgba(201,168,76,0.4) 40%, rgba(201,168,76,0.4) 60%, transparent)" }} />
+
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-6 px-7 py-6 lg:px-8 lg:py-7">
+        {/* Left */}
+        <div className="flex items-start lg:items-center gap-5">
+          <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", boxShadow: "0 0 20px rgba(201,168,76,0.25)" }}>
+            <span className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-heading)" }}>IM</span>
+          </div>
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-1" style={{ color: "rgba(201,168,76,0.45)" }}>
+              Doporučený partner · Inzerce
+            </span>
+            <p className="text-sm lg:text-base font-semibold leading-snug mb-1" style={{ fontFamily: "var(--font-heading)", color: "#F1F5F9" }}>
+              Senior interim management pro střední firmy — s týmovým zázemím a smluvními KPI
+            </p>
+            <p className="text-xs" style={{ color: "rgba(148,163,184,0.5)" }}>
+              Zastupitelnost · Procesní standardizace · Měřitelné výsledky · 90 dní do první zpětné vazby
+            </p>
+          </div>
+        </div>
+
+        {/* Right: CTAs */}
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 lg:min-w-[160px]">
+          <Link
+            href="/diagnostika"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-200"
+            style={{ background: "linear-gradient(135deg, #C9A84C, #8A6820)", color: "#fff", boxShadow: "0 2px 14px rgba(201,168,76,0.22)" }}
+          >
+            Bezplatná konzultace <ArrowRight size={12} />
+          </Link>
+          <Link
+            href="/porovnani"
+            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-200"
+            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)", color: "rgba(241,245,249,0.55)" }}
+          >
+            Porovnat poskytovatele
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────
    Legacy aliases — zachování kompatibility s existujícími importy
 ───────────────────────────────────────────────────────────────────── */
-export function BannerLeaderboard() { return <BannerStrip />; }
 export function BannerInFeed() { return <BannerSidebar />; }
 export function BannerPostArticle() { return <BannerStrip />; }
 export function BannerConsultation({ variant = "inline" }: { variant?: "inline" | "sidebar" }) {
@@ -201,4 +258,4 @@ export function BannerConsultation({ variant = "inline" }: { variant?: "inline" 
   return <BannerStrip />;
 }
 export function BannerReport() { return null; }
-export function BannerPartner() { return <BannerStrip />; }
+export function BannerPartner() { return <BannerLeaderboard />; }

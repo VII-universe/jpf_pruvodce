@@ -242,8 +242,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Strip banner */}
-          <BannerStrip />
         </div>
       </section>
 
