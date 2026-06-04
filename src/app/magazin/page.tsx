@@ -48,7 +48,7 @@ function HeroCard({ article }: { article: Article }) {
       <div className="relative z-10 p-8 lg:p-10">
         <div className="flex items-center gap-3 mb-4">
           <CategoryBadge category={article.category} />
-          <span className="text-xs" style={{ color: "var(--text-3)" }}>{article.readingTime} min čtení</span>
+          <span className="text-[11px] font-medium px-2 py-0.5 rounded" style={{ background: "rgba(0,0,0,0.45)", color: "rgba(255,255,255,0.88)" }}>{article.readingTime} min čtení</span>
         </div>
         <h2 className="text-2xl lg:text-4xl font-bold leading-tight mb-3 transition-colors duration-300 group-hover:text-[#E4C76B]"
           style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)", letterSpacing: "-0.02em" }}>
@@ -77,7 +77,7 @@ function MediumCard({ article }: { article: Article }) {
           style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
           {article.title}
         </h3>
-        <p className="text-xs mt-1" style={{ color: "var(--text-3)" }}>{article.readingTime} min · {formatDateShort(article.publishedAt)}</p>
+        <span className="text-[11px] font-medium px-2 py-0.5 rounded mt-1 inline-block" style={{ background: "rgba(0,0,0,0.45)", color: "rgba(255,255,255,0.88)" }}>{article.readingTime} min · {formatDateShort(article.publishedAt)}</span>
       </div>
     </Link>
   );
