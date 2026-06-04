@@ -44,7 +44,7 @@ function HeroCard({ article }: { article: Article }) {
     <Link href={`/magazin/${article.slug}`} className="group relative flex flex-col justify-end overflow-hidden rounded-2xl" style={{ minHeight: 480 }}>
       <Image src={article.image} alt={article.imageAlt} fill priority
         className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:1024px)100vw,66vw" />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,9,15,0.97) 0%, rgba(7,9,15,0.65) 45%, rgba(7,9,15,0.15) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,9,15,0.68) 0%, rgba(7,9,15,0.72) 35%, rgba(7,9,15,0.4) 65%, transparent 100%)" }} />
       <div className="relative z-10 p-8 lg:p-10">
         <div className="flex items-center gap-3 mb-4">
           <CategoryBadge category={article.category} />
@@ -70,7 +70,7 @@ function MediumCard({ article }: { article: Article }) {
     <Link href={`/magazin/${article.slug}`} className="group relative flex flex-col justify-end overflow-hidden rounded-2xl" style={{ minHeight: 280 }}>
       <Image src={article.image} alt={article.imageAlt} fill
         className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px)100vw,33vw" />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--bg) 0%, rgba(7,9,15,0.6) 55%, transparent 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,9,15,0.65) 0%, rgba(7,9,15,0.55) 45%, transparent 100%)" }} />
       <div className="relative z-10 p-5">
         <CategoryBadge category={article.category} size="xs" />
         <h3 className="mt-2 text-base font-bold leading-snug transition-colors duration-200 group-hover:text-[#E4C76B] line-clamp-2"

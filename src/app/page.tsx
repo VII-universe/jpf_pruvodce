@@ -198,7 +198,7 @@ export default function HomePage() {
               <Link href={`/magazin/${articles[0].slug}`} className="lg:col-span-7 group relative rounded-2xl overflow-hidden flex flex-col justify-end" style={{ minHeight: 420 }}>
                 <Image src={articles[0].image} alt={articles[0].imageAlt} fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:1024px)100vw,58vw" />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,9,15,0.97) 0%, rgba(7,9,15,0.5) 50%, transparent 100%)" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,9,15,0.68) 0%, rgba(7,9,15,0.72) 35%, rgba(7,9,15,0.4) 65%, transparent 100%)" }} />
                 <div className="relative z-10 p-7">
                   <span className="text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-lg mb-3 inline-block" style={{ background: "rgba(var(--accent-rgb),0.15)", color: "var(--accent)", border: "1px solid rgba(201,168,76,0.25)" }}>
                     {articles[0].category}
