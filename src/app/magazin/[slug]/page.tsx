@@ -61,38 +61,69 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
-      {/* Hero */}
-      <div className="relative pt-16 overflow-hidden" style={{ height: "clamp(380px, 55vh, 620px)" }}>
-        <Image src={article.image} alt={article.imageAlt} fill priority
-          className="object-cover" sizes="100vw" />
-        <div className="absolute inset-0 hero-img-overlay-top" style={{ background: "linear-gradient(to top, var(--bg) 0%, rgba(7,9,15,0.75) 45%, rgba(7,9,15,0.15) 100%)" }} />
-        {/* Bottom fade to page background */}
-        <div className="absolute bottom-0 inset-x-0 pointer-events-none" style={{ height: 100, background: "linear-gradient(to bottom, transparent, var(--bg))", zIndex: 10 }} />
-        <div className="absolute inset-x-0 bottom-0 max-w-4xl mx-auto px-6 lg:px-8 pb-10 lg:pb-14">
-          <Link href="/magazin" className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors hover:text-[#C9A84C]"
-            style={{ color: "var(--text-3)" }}>
-            <ArrowLeft size={14} /> Zpět na magazín
-          </Link>
-          <div className="mb-4">
-            <span className="px-3 py-1 text-xs font-bold rounded-lg uppercase tracking-wide"
-              style={{ background: "rgba(var(--accent-rgb),0.15)", color: "var(--accent)", border: "1px solid rgba(201,168,76,0.3)" }}>
+
+      {/* ── ARTICLE HEADER (no photo background) ── */}
+      <div className="pt-16" style={{ background: "var(--bg)" }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 lg:pt-16 pb-8">
+
+          {/* Back + category */}
+          <div className="flex items-center gap-3 mb-6">
+            <Link href="/magazin" className="inline-flex items-center gap-1.5 text-sm transition-colors hover:text-[var(--accent)]"
+              style={{ color: "var(--text-3)" }}>
+              <ArrowLeft size={14} /> Zpět na magazín
+            </Link>
+            <span style={{ color: "var(--border-2)" }}>·</span>
+            <span className="px-2.5 py-0.5 text-xs font-bold rounded-md uppercase tracking-wide"
+              style={{ background: "rgba(var(--accent-rgb),0.12)", color: "var(--accent)", border: `1px solid rgba(var(--accent-rgb),0.25)` }}>
               {article.category}
             </span>
           </div>
-          <h1 className="text-3xl lg:text-5xl font-bold leading-[1.1] mb-4 tracking-tight max-w-3xl"
+
+          {/* Title */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] mb-5 tracking-tight"
             style={{ fontFamily: "var(--font-heading)", color: "var(--text-1)" }}>
             {article.title}
           </h1>
-          <p className="text-base lg:text-lg max-w-2xl mb-6 leading-relaxed" style={{ color: "var(--text-2)" }}>{article.subtitle}</p>
-          <div className="flex flex-wrap gap-4 text-sm" style={{ color: "var(--text-3)" }}>
-            <span className="flex items-center gap-1.5"><Calendar size={12} />{formatDate(article.publishedAt)}</span>
-            <span className="flex items-center gap-1.5"><Clock size={12} />{article.readingTime} minut čtení</span>
+
+          {/* Subtitle */}
+          <p className="text-lg lg:text-xl leading-relaxed mb-6 max-w-2xl"
+            style={{ color: "var(--text-2)", fontFamily: "var(--font-body)" }}>
+            {article.subtitle}
+          </p>
+
+          {/* Meta: date + reading time */}
+          <div className="flex flex-wrap items-center gap-4 pb-8"
+            style={{ borderBottom: "1px solid var(--border)" }}>
+            <span className="flex items-center gap-1.5 text-sm" style={{ color: "var(--text-3)" }}>
+              <Calendar size={13} />{formatDate(article.publishedAt)}
+            </span>
+            <span style={{ color: "var(--border-2)", fontSize: "0.75rem" }}>·</span>
+            <span className="flex items-center gap-1.5 text-sm" style={{ color: "var(--text-3)" }}>
+              <Clock size={13} />{article.readingTime} minut čtení
+            </span>
           </div>
+        </div>
+
+        {/* ── FEATURED PHOTO ── */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <div className="relative w-full overflow-hidden rounded-xl lg:rounded-2xl"
+            style={{ height: "clamp(280px, 45vw, 540px)" }}>
+            <Image
+              src={article.image}
+              alt={article.imageAlt}
+              fill priority
+              className="object-cover"
+              sizes="(max-width:1024px) 100vw, 900px"
+            />
+          </div>
+          <p className="mt-3 text-xs text-center" style={{ color: "var(--text-4)" }}>
+            {article.imageAlt}
+          </p>
         </div>
       </div>
 
-      {/* Body */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
+      {/* ── BODY ── */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12 items-start">
           {/* Content */}
           <article className="max-w-[68ch]">
